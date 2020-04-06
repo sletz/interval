@@ -24,21 +24,25 @@
 #include <cmath>
 #include <iostream>
 
-// An Intervals is a set of numbers approximated by two boundaries
+// ***************************************************************************
+//
+//     An Interval is a set of numbers approximated by two boundaries
+//
+//****************************************************************************
 
 class interval
 {
    private:
-    bool   fEmpty;  ///< true when the interval is empty
-    double fLo;     ///< minimal value
-    double fHi;     ///< maximal value
+    bool   fEmpty{true};  ///< true when the interval is empty
+    double fLo{NAN};      ///< minimal value
+    double fHi{NAN};      ///< maximal value
 
    public:
     //-------------------------------------------------------------------------
     // constructors
     //-------------------------------------------------------------------------
 
-    interval() : fEmpty(true), fLo(NAN), fHi(NAN) {}
+    interval() = default;
 
     interval(double n, double m)
     {
@@ -95,9 +99,9 @@ inline interval intersection(const interval& i, const interval& j)
         double l = std::max(i.lo(), j.lo());
         double h = std::min(i.hi(), j.hi());
         if (l > h) {
-            return interval();
+            return {};
         } else {
-            return interval(l, h);
+            return {l, h};
         }
     }
 }
@@ -111,7 +115,7 @@ inline interval reunion(const interval& i, const interval& j)
     } else {
         double l = std::min(i.lo(), j.lo());
         double h = std::max(i.hi(), j.hi());
-        return interval(l, h);
+        return {l, h};
     }
 }
 
