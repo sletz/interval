@@ -26,12 +26,11 @@
 
 // ***************************************************************************
 //
-//     An Interval is a set of numbers approximated by two boundaries
+//     An Interval is a (possibly empty) set of numbers approximated by two boundaries
 //
 //****************************************************************************
 
-class interval
-{
+class interval {
    private:
     bool   fEmpty{true};  ///< true when the interval is empty
     double fLo{NAN};      ///< minimal value
@@ -129,13 +128,28 @@ inline bool operator==(const interval& i, const interval& j)
     return (i.empty() && j.empty()) || ((i.lo() == j.lo()) && (i.hi() == j.hi()));
 }
 
-inline bool operator<=(const interval& i, const interval& j) { return reunion(i, j) == j; }
+inline bool operator<=(const interval& i, const interval& j)
+{
+    return reunion(i, j) == j;
+}
 
 // additional predicates
-inline bool operator!=(const interval& i, const interval& j) { return !(i == j); }
+inline bool operator!=(const interval& i, const interval& j)
+{
+    return !(i == j);
+}
 
-inline bool operator<(const interval& i, const interval& j) { return (i <= j) && (i != j); }
+inline bool operator<(const interval& i, const interval& j)
+{
+    return (i <= j) && (i != j);
+}
 
-inline bool operator>=(const interval& i, const interval& j) { return j <= i; }
+inline bool operator>=(const interval& i, const interval& j)
+{
+    return j <= i;
+}
 
-inline bool operator>(const interval& i, const interval& j) { return j < i; }
+inline bool operator>(const interval& i, const interval& j)
+{
+    return j < i;
+}
