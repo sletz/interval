@@ -65,6 +65,7 @@ class interval {
     //-------------------------------------------------------------------------
 
     bool   empty() const { return fEmpty; }
+    bool   hasZero() const { return (fLo <= 0.0) & (fHi >= 0.0); }
     double lo() const { return fLo; }
     double hi() const { return fHi; }
 };
