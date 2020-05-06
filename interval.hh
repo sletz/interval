@@ -26,7 +26,8 @@
 
 // ***************************************************************************
 //
-//     An Interval is a (possibly empty) set of numbers approximated by two boundaries
+//     An Interval is a (possibly empty) set of numbers approximated by two
+//     boundaries
 //
 //****************************************************************************
 
@@ -58,7 +59,8 @@ class interval {
 
     explicit interval(double n) : interval(n, n) {}
 
-    // interval(const interval& r) : fEmpty(r.empty()), fLo(r.lo()), fHi(r.hi()) {}
+    // interval(const interval& r) : fEmpty(r.empty()), fLo(r.lo()), fHi(r.hi())
+    // {}
 
     //-------------------------------------------------------------------------
     // basic properties
@@ -66,6 +68,7 @@ class interval {
 
     bool   empty() const { return fEmpty; }
     bool   hasZero() const { return (fLo <= 0.0) & (fHi >= 0.0); }
+    bool   isZero() const { return (fLo == 0.0) & (fHi == 0.0); }
     double lo() const { return fLo; }
     double hi() const { return fHi; }
 };
