@@ -34,3 +34,6 @@
 # edition
 .clang-format
 .vscode
+
+# test executable
+testinterval
