@@ -19,6 +19,10 @@ class interval_algebra {
     interval Inv(const interval& x) const;
     void     testInv() const;
     //
+    interval Neg(const interval& x) const;
+    void     testNeg() const;
+    //
+    interval Mod(const interval& x, double m) const;
     interval Mod(const interval& x, const interval& y) const;
     void     testMod() const;
     //

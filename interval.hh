@@ -66,11 +66,12 @@ class interval {
     // basic properties
     //-------------------------------------------------------------------------
 
-    bool   empty() const { return fEmpty; }
+    bool   isEmpty() const { return fEmpty; }
     bool   hasZero() const { return (fLo <= 0.0) & (fHi >= 0.0); }
     bool   isZero() const { return (fLo == 0.0) & (fHi == 0.0); }
     double lo() const { return fLo; }
     double hi() const { return fHi; }
+    double size() const { return fHi - fLo; }
 };
 
 //-------------------------------------------------------------------------
@@ -79,7 +80,7 @@ class interval {
 
 inline std::ostream& operator<<(std::ostream& dst, const interval& i)
 {
-    if (i.empty()) {
+    if (i.isEmpty()) {
         return dst << "interval()";
     } else if (i.lo() == i.hi()) {
         return dst << "interval(" << i.lo() << ")";
@@ -94,9 +95,9 @@ inline std::ostream& operator<<(std::ostream& dst, const interval& i)
 
 inline interval intersection(const interval& i, const interval& j)
 {
-    if (i.empty()) {
+    if (i.isEmpty()) {
         return i;
-    } else if (j.empty()) {
+    } else if (j.isEmpty()) {
         return j;
     } else {
         double l = std::max(i.lo(), j.lo());
@@ -111,9 +112,9 @@ inline interval intersection(const interval& i, const interval& j)
 
 inline interval reunion(const interval& i, const interval& j)
 {
-    if (i.empty()) {
+    if (i.isEmpty()) {
         return j;
-    } else if (j.empty()) {
+    } else if (j.isEmpty()) {
         return i;
     } else {
         double l = std::min(i.lo(), j.lo());
@@ -129,7 +130,7 @@ inline interval reunion(const interval& i, const interval& j)
 // basic predicates
 inline bool operator==(const interval& i, const interval& j)
 {
-    return (i.empty() && j.empty()) || ((i.lo() == j.lo()) && (i.hi() == j.hi()));
+    return (i.isEmpty() && j.isEmpty()) || ((i.lo() == j.lo()) && (i.hi() == j.hi()));
 }
 
 inline bool operator<=(const interval& i, const interval& j)
