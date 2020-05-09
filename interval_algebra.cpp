@@ -1,4 +1,6 @@
 #include <algorithm>
+#include <functional>
+#include <random>
 #include "check.hh"
 #include "interval.hh"
 
@@ -178,7 +180,7 @@ interval interval_algebra::Mod(const interval& x, double m) const
         return Neg(Mod({-x.hi(), -x.lo()}, m));
         // (3): split into negative and non-negative interval, compute and join
     } else if (x.lo() < 0) {
-        return reunion(Mod({x.lo(), -0.0}, m), Mod({0.0, x.hi()}, m));
+        return reunion(Mod({x.lo(), nextafter(-0.0, -HUGE_VAL)}, m), Mod({0.0, x.hi()}, m));
         // (4): there is no k > 0 such that x.lo() < k*m <= x.hi()
     } else if ((x.size() < fabs(m)) && (fmod(x.lo(), m) <= fmod(x.hi(), m))) {
         return {fmod(x.lo(), m), fmod(x.hi(), m)};
@@ -227,10 +229,11 @@ interval interval_algebra::Mod(const interval& x, const interval& y) const
 
 void interval_algebra::testMod() const
 {
-    check("test algebra Mod", Mod(interval(-100, 100), 1.0), interval(0, nextafter(1.0, 0)));
+    check("test algebra Mod", Mod(interval(-100, 100), 1.0), interval(nextafter(-1.0, 0.0), nextafter(1.0, 0.0)));
     check("test algebra Mod", Mod(interval(0, 100), 2), interval(0, nextafter(2.0, 0)));
     check("test algebra Mod", Mod(interval(0, 100), -1.0), interval(0, nextafter(1.0, 0)));
-    // check("test algebra Mod", Mod(interval(-100, 100), 1.0), interval(0, nextafter(1.0, 0)));
+    check("test algebra Mod", Mod(interval(5, 7), interval(8, 10)), interval(5, 7));
+    check("test algebra Mod", Mod(interval(-7, 7), interval(8, 10)), interval(-7, 7));
     check("test algebra Mod", Mod(interval(0, 100), interval(7, 7)), interval(0, nextafter(7.0, 0.0)));
 }
 

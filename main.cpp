@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -60,4 +61,28 @@ int main()
 
     interval_algebra A;
     A.testAll();
+
+    {
+        double u, v, w;
+        u = 0.0;
+        v = nextafter(u, -HUGE_VAL);
+        w = nextafter(v, -HUGE_VAL);
+
+        if ((u != v) && (v != w) && (u > v) && (v > w)) {
+            std::cout << "Order OK" << std::endl;
+        } else {
+            std::cout << "Order NOT OK" << std::endl;
+        }
+    }
+
+    analyzemod(interval(9), interval(10));
+    analyzemod(interval(8, 9), interval(10));
+    analyzemod(interval(8, 9), interval(1, 10));
+    analyzemod(interval(8, 11), interval(10));
+    analyzemod(interval(9), interval(9, 10));
+    analyzemod(interval(-9), interval(9, 10));
+    analyzemod(interval(0, 9), interval(9, 10));
+    analyzemod(interval(-9, 0), interval(9, 10));
+    analyzemod(interval(0, 100), interval(1));
+    analyzemod(interval(-100, 100), interval(1));
 }
