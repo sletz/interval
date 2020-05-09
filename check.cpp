@@ -6,16 +6,12 @@
 #include "check.hh"
 #include "interval_algebra.hh"
 
-static double min4(double a, double b, double c, double d)
-{
-    return std::min(std::min(a, b), std::min(c, d));
-}
-
-static double max4(double a, double b, double c, double d)
-{
-    return std::max(std::max(a, b), std::max(c, d));
-}
-
+/**
+ * @brief check we have the expected interval
+ *
+ * @param expected interval as a string
+ * @param exp interval to test
+ */
 void check(const std::string& expected, const interval& exp)
 {
     std::stringstream ss;
@@ -27,6 +23,13 @@ void check(const std::string& expected, const interval& exp)
     }
 }
 
+/**
+ * @brief check that an interval result is the expected one
+ *
+ * @param testname
+ * @param exp
+ * @param res
+ */
 void check(const std::string& testname, const interval& exp, const interval& res)
 {
     if (exp == res) {
@@ -36,6 +39,13 @@ void check(const std::string& testname, const interval& exp, const interval& res
     }
 }
 
+/**
+ * @brief check that a boolean result is the expected one
+ *
+ * @param testname
+ * @param exp
+ * @param res
+ */
 void check(const std::string& testname, bool exp, bool res)
 {
     if (exp == res) {
@@ -45,9 +55,30 @@ void check(const std::string& testname, bool exp, bool res)
     }
 }
 
+/**
+ * @brief Approximate the resulting interval of a function
+ *
+ * @param N the number of iterations
+ * @param f the function to test
+ * @param x the interval of its first argument
+ * @param y the interval of its second argument
+ * @return interval the interval of the results
+ */
+
+static double min4(double a, double b, double c, double d)
+{
+    return std::min(std::min(a, b), std::min(c, d));
+}
+
+static double max4(double a, double b, double c, double d)
+{
+    return std::max(std::max(a, b), std::max(c, d));
+}
+
 interval testfun(int N, fun f, const interval& x, const interval& y)
 {
-    std::default_random_engine             generator;
+    std::random_device                     rd;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine             generator(rd());
     std::uniform_real_distribution<double> rx(x.lo(), x.hi());
     std::uniform_real_distribution<double> ry(y.lo(), y.hi());
 
@@ -69,7 +100,13 @@ interval testfun(int N, fun f, const interval& x, const interval& y)
 
     return {l, h};
 }
-
+/**
+ * @brief analyze the Mod function, print the simulated and computed resulting interval.
+ * The two should be close enough.
+ *
+ * @param x first argument interval
+ * @param y second argument interval
+ */
 void analyzemod(interval x, interval y)
 {
     interval_algebra A;
