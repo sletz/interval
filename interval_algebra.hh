@@ -26,20 +26,95 @@ class interval_algebra {
     interval Mod(const interval& x, const interval& y) const;
     void     testMod() const;
     //
-    interval Log(const interval& x) const;
-    void     testLog() const;
+
+    interval Acos(const interval& x) const;
+    void     testAcos() const;
     //
-    interval Delay(const interval& x, const interval& y) const;
-    void     testDelay() const;
+    interval Acosh(const interval& x) const;
+    void     testAcosh() const;
     //
     interval And(const interval& x, const interval& y) const;
     void     testAnd() const;
     //
+    interval Asin(const interval& x) const;
+    void     testAsin() const;
+    //
+    interval Asinh(const interval& x) const;
+    void     testAsinh() const;
+    //
+    interval Atan(const interval& x) const;
+    void     testAtan() const;
+    //
+    interval Atan2(const interval& x, const interval& y) const;
+    void     testAtan2() const;
+    //
+    interval Atanh(const interval& x) const;
+    void     testAtanh() const;
+    //
+    interval Ceil(const interval& x) const;
+    void     testCeil() const;
+    interval Cos(const interval& x) const;
+    void     testCos() const;
+    interval Cosh(const interval& x) const;
+    void     testCosh() const;
+    interval Delay(const interval& x) const;
+    void     testDelay() const;
+    interval Eq(const interval& x, const interval& y) const;
+    void     testEq() const;
+    interval Exp(const interval& x) const;
+    void     testExp() const;
+    interval Float(const interval& x) const;
+    void     testFloat() const;
+    interval Floor(const interval& x) const;
+    void     testFloor() const;
+    interval Ge(const interval& x, const interval& y) const;
+    void     testGe() const;
+    interval Gt(const interval& x, const interval& y) const;
+    void     testGt() const;
+    interval Int(const interval& x) const;
+    void     testInt() const;
+    interval Le(const interval& x, const interval& y) const;
+    void     testLe() const;
+    interval Log(const interval& x) const;
+    void     testLog() const;
+    interval Log10(const interval& x) const;
+    void     testLog10() const;
+    interval Lsh(const interval& x, const interval& y) const;
+    void     testLsh() const;
+    interval Lt(const interval& x, const interval& y) const;
+    void     testLt() const;
+    interval Max(const interval& x) const;
+    void     testMax() const;
+    interval Mem(const interval& x) const;
+    void     testMem() const;
+    interval Min(const interval& x) const;
+    void     testMin() const;
+    interval Ne(const interval& x, const interval& y) const;
+    void     testNe() const;
+    interval Not(const interval& x) const;
+    void     testNot() const;
     interval Or(const interval& x, const interval& y) const;
     void     testOr() const;
-    //
+    interval Pow(const interval& x, const interval& y) const;
+    void     testPow() const;
+    interval Remainder(const interval& x) const;
+    void     testRemainder() const;
+    interval Rint(const interval& x) const;
+    void     testRint() const;
+    interval Rsh(const interval& x, const interval& y) const;
+    void     testRsh() const;
+    interval Sin(const interval& x) const;
+    void     testSin() const;
+    interval Sinh(const interval& x) const;
+    void     testSinh() const;
+    interval Sqrt(const interval& x) const;
+    void     testSqrt() const;
+    interval Tan(const interval& x) const;
+    void     testTan() const;
+    interval Tanh(const interval& x) const;
+    void     testTanh() const;
     interval Xor(const interval& x, const interval& y) const;
     void     testXor() const;
-    //
+
     void testAll();
 };

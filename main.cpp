@@ -63,10 +63,9 @@ int main()
     A.testAll();
 
     {
-        double u, v, w;
-        u = 0.0;
-        v = nextafter(u, -HUGE_VAL);
-        w = nextafter(v, -HUGE_VAL);
+        double u = 0.0;
+        double v = nextafter(u, -HUGE_VAL);
+        double w = nextafter(v, -HUGE_VAL);
 
         if ((u != v) && (v != w) && (u > v) && (v > w)) {
             std::cout << "Order OK" << std::endl;

@@ -66,9 +66,21 @@ class interval {
     // basic properties
     //-------------------------------------------------------------------------
 
-    bool   isEmpty() const { return fEmpty; }
-    bool   hasZero() const { return (fLo <= 0.0) & (fHi >= 0.0); }
-    bool   isZero() const { return (fLo == 0.0) & (fHi == 0.0); }
+    bool isEmpty() const { return fEmpty; }
+    bool hasZero() const { return (fLo <= 0.0) & (fHi >= 0.0); }
+    bool isZero() const { return (fLo == 0.0) & (fHi == 0.0); }
+    bool isconst() const { return (fLo == fHi) && !fEmpty; }
+
+    bool ispowerof2()
+    {
+        int n = int(fHi);
+        return isconst() && ((n & (-n)) == n);
+    }
+    bool isbitmask()
+    {
+        int n = int(fHi) + 1;
+        return isconst() && ((n & (-n)) == n);
+    }
     double lo() const { return fLo; }
     double hi() const { return fHi; }
     double size() const { return fHi - fLo; }

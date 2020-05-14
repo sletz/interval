@@ -1,2 +1,4 @@
 # interval
-A simple interval library used by the Faust compiler
+A simple interval library for the Faust compiler.
+
+

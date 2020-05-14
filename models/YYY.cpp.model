@@ -1,0 +1,21 @@
+#include <algorithm>
+#include <functional>
+#include <random>
+
+#include "check.hh"
+#include "interval.hh"
+#include "interval_algebra.hh"
+
+//------------------------------------------------------------------------------------------
+// Interval YYY
+// interval YYY(const interval& x, const interval& y) const;
+// void testYYY() const;
+
+interval interval_algebra::YYY(const interval& x, const interval& y) const
+{
+    return {};
+}
+
+void interval_algebra::testYYY() const
+{
+}

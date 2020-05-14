@@ -1,0 +1,28 @@
+#!/bin/bash
+
+function genbinary {
+    sed "s/YYY/$1/g" YYY.cpp.model > "interval$1.cpp"
+}
+
+function genunary {
+    sed "s/XXX/$1/g" XXX.cpp.model > "interval$1.cpp"
+}
+
+BINOP="And Or Xor Lsh Rsh Lt Le Eq Ne Gt Ge Pow Atan2"
+
+UNOP1="Not Cos Sin Tan Acos Asin Atan Cosh Sinh Tanh Acosh Asinh Atanh Exp"
+UNOP2="Log Log10 Ceil Floor Rint Remainder Int Float Sqrt"
+UNOP3="Min Max Delay Mem"
+UNOP="$UNOP1 $UNOP2 $UNOP3"
+
+
+for f in $BINOP; do
+    genbinary $f
+done
+
+
+for f in $UNOP; do
+    genunary $f
+done
+
+
