@@ -151,3 +151,45 @@ void analyzeufun(int E, int M, const char* title, const interval& D, ufun f)
     }
     std::cout << std::endl;
 }
+
+void analyzeumth(int E, int M, const char* title, const interval& D, ufun f, umth mp)
+{
+    std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine             generator(R());
+    std::uniform_real_distribution<double> rd(D.lo(), D.hi());
+    interval_algebra                       A;
+
+    std::cout << "Analysis of " << title << " in domain " << D << std::endl;
+
+    for (int e = 0; e < E; e++) {  // E experiments
+
+        // X: random input interval X < I
+        double   a = rd(generator);
+        double   b = rd(generator);
+        interval X(std::min(a, b), std::max(a, b));
+
+        // [ylo,yhi] initial f(X) interval
+        double t0 = f(X.lo());
+        double t1 = f(X.hi());
+        double y0 = std::min(t0, t1);
+        double y1 = std::max(t0, t1);
+
+        // random values in X
+        std::uniform_real_distribution<double> rx(X.lo(), X.hi());
+
+        for (int m = 0; m < M; m++) {  // M measurements
+            double y = f(rx(generator));
+            if (y < y0) y0 = y;
+            if (y > y1) y1 = y;
+        }
+        interval Y(y0, y1);
+        interval Z = (A.*mp)(X);
+
+        if (Z >= Y) {
+            std::cout << "OK    " << e << ": " << title << "(" << X << ") = " << Z << " >= " << Y << std::endl;
+        } else {
+            std::cout << "ERROR " << e << ": " << title << "(" << X << ") = " << Z << " INSTEAD OF" << Y << std::endl;
+        }
+    }
+    std::cout << std::endl;
+}
