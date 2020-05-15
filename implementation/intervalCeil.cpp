@@ -13,9 +13,10 @@
 
 interval interval_algebra::Ceil(const interval& x) const
 {
-    return {};
+    return {ceil(x.lo()), ceil(x.hi())};
 }
 
 void interval_algebra::testCeil() const
 {
+    check("test algebra Ceil", Ceil(interval(-3.1, 5.9)), interval(-3, 6));
 }

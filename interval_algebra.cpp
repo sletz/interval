@@ -16,4 +16,6 @@ void interval_algebra::testAll()
     testLog();
     testNeg();
     testMod();
+    testCeil();
+    testFloor();
 }

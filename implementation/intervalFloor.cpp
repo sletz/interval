@@ -13,9 +13,10 @@
 
 interval interval_algebra::Floor(const interval& x) const
 {
-    return {};
+    return {floor(x.lo()), floor(x.hi())};
 }
 
 void interval_algebra::testFloor() const
 {
+    check("test algebra Floor", Floor(interval(-3.1, 5.9)), interval(-4, 5));
 }

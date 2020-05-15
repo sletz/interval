@@ -75,7 +75,7 @@ static double max4(double a, double b, double c, double d)
     return std::max(std::max(a, b), std::max(c, d));
 }
 
-interval testfun(int N, fun f, const interval& x, const interval& y)
+interval testfun(int N, bfun f, const interval& x, const interval& y)
 {
     std::random_device                     rd;  // used to generate a random seed, based on some hardware randomness
     std::default_random_engine             generator(rd());
@@ -100,6 +100,7 @@ interval testfun(int N, fun f, const interval& x, const interval& y)
 
     return {l, h};
 }
+
 /**
  * @brief analyze the Mod function, print the simulated and computed resulting interval.
  * The two should be close enough.
@@ -112,5 +113,41 @@ void analyzemod(interval x, interval y)
     interval_algebra A;
     std::cout << "simulated fmod(" << x << "," << y << ") = " << testfun(10000, fmod, x, y) << std::endl;
     std::cout << "computed  fmod(" << x << "," << y << ") = " << A.Mod(x, y) << std::endl;
+    std::cout << std::endl;
+}
+
+void analyzeufun(int E, int M, const char* title, const interval& D, ufun f)
+{
+    std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine             generator(R());
+    std::uniform_real_distribution<double> rd(D.lo(), D.hi());
+
+    std::cout << "Analysis of " << title << " in domain " << D << std::endl;
+
+    for (int e = 0; e < E; e++) {  // E experiments
+
+        // X: random input interval X < I
+        double   a = rd(generator);
+        double   b = rd(generator);
+        interval X(std::min(a, b), std::max(a, b));
+
+        // [ylo,yhi] initial f(X) interval
+        double t0 = f(X.lo());
+        double t1 = f(X.hi());
+        double y0 = std::min(t0, t1);
+        double y1 = std::max(t0, t1);
+
+        // random values in X
+        std::uniform_real_distribution<double> rx(X.lo(), X.hi());
+
+        for (int m = 0; m < M; m++) {  // M measurements
+            double y = f(rx(generator));
+            if (y < y0) y0 = y;
+            if (y > y1) y1 = y;
+        }
+        interval Y(y0, y1);
+
+        std::cout << e << ": " << title << "(" << X << ") = " << Y << std::endl;
+    }
     std::cout << std::endl;
 }
