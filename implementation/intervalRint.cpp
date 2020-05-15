@@ -13,9 +13,10 @@
 
 interval interval_algebra::Rint(const interval& x) const
 {
-    return {};
+    return {rint(x.lo()), rint(x.hi())};
 }
 
 void interval_algebra::testRint() const
 {
+    check("test algebra Rint", Rint(interval(-3.1, 5.9)), interval(-3, 6));
 }

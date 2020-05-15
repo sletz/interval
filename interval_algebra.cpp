@@ -18,4 +18,5 @@ void interval_algebra::testAll()
     testMod();
     testCeil();
     testFloor();
+    testRint();
 }
