@@ -20,4 +20,6 @@ void interval_algebra::testAll()
     testFloor();
     testRint();
     testAcos();
+    testAcosh();
+    testAsin();
 }
