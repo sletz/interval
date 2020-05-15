@@ -168,19 +168,19 @@ void analyzeumth(int E, int M, const char* title, const interval& D, ufun f, umt
         double   b = rd(generator);
         interval X(std::min(a, b), std::max(a, b));
 
-        // [ylo,yhi] initial f(X) interval
-        double t0 = f(X.lo());
-        double t1 = f(X.hi());
-        double y0 = std::min(t0, t1);
-        double y1 = std::max(t0, t1);
+        // boundaries of the resulting interval
+        double y0 = HUGE_VAL;   // std::min(t0, t1);
+        double y1 = -HUGE_VAL;  // std::max(t0, t1);
 
         // random values in X
         std::uniform_real_distribution<double> rx(X.lo(), X.hi());
 
         for (int m = 0; m < M; m++) {  // M measurements
             double y = f(rx(generator));
-            if (y < y0) y0 = y;
-            if (y > y1) y1 = y;
+            if (!std::isnan(y)) {
+                if (y < y0) y0 = y;
+                if (y > y1) y1 = y;
+            }
         }
         interval Y(y0, y1);
         interval Z = (A.*mp)(X);
