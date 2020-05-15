@@ -11,11 +11,15 @@
 // interval Acos(const interval& x) const;
 // void testAcos() const;
 
-interval interval_algebra::Acos(const interval& x) const
+static interval AcosDomain(-1, 1);
+interval        interval_algebra::Acos(const interval& x) const
 {
-    return {};
+    interval i = intersection(AcosDomain, x);
+    if (i.isEmpty()) return i;
+    return {acos(i.hi()), acos(i.lo())};
 }
 
 void interval_algebra::testAcos() const
 {
+    analyzeumth(10, 1000, "acos", interval(-1, 1), acos, &interval_algebra::Acos);
 }

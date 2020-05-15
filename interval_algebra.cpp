@@ -19,4 +19,5 @@ void interval_algebra::testAll()
     testCeil();
     testFloor();
     testRint();
+    testAcos();
 }
