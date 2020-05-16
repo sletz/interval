@@ -22,4 +22,5 @@ void interval_algebra::testAll()
     testAcos();
     testAcosh();
     testAsin();
+    testAsinh();
 }
