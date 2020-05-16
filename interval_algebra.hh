@@ -57,7 +57,7 @@ class interval_algebra {
     void     testCos() const;
     interval Cosh(const interval& x) const;
     void     testCosh() const;
-    interval Delay(const interval& x) const;
+    interval Delay(const interval& x, const interval& y) const;
     void     testDelay() const;
     interval Eq(const interval& x, const interval& y) const;
     void     testEq() const;

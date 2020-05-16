@@ -26,4 +26,6 @@ void interval_algebra::testAll()
     testAtan();
     testAtanh();
     testCos();
+    testCosh();
+    testDelay();
 }
