@@ -183,10 +183,12 @@ void analyzeumth(int E, int M, const char* title, const interval& D, ufun f, umt
             }
         }
         interval Y(y0, y1);
-        interval Z = (A.*mp)(X);
+        interval Z         = (A.*mp)(X);
+        double   precision = Y.size() / Z.size();
 
         if (Z >= Y) {
-            std::cout << "OK    " << e << ": " << title << "(" << X << ") = " << Z << " >= " << Y << std::endl;
+            std::cout << "OK    " << e << ": " << title << "(" << X << ") = " << Z << " >= " << Y << " (precision "
+                      << precision << ")" << std::endl;
         } else {
             std::cout << "ERROR " << e << ": " << title << "(" << X << ") = " << Z << " INSTEAD OF" << Y << std::endl;
         }
