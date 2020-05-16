@@ -28,4 +28,5 @@ void interval_algebra::testAll()
     testCos();
     testCosh();
     testDelay();
+    testEq();
 }
