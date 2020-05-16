@@ -23,4 +23,6 @@ void interval_algebra::testAll()
     testAcosh();
     testAsin();
     testAsinh();
+    testAtan();
+    testAtanh();
 }

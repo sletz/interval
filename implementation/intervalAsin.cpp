@@ -8,6 +8,8 @@
 
 //------------------------------------------------------------------------------------------
 // Interval Asin
+// Calculates the principal value of the arc sine of x; that is the value whose sine is x.
+// the return value is in the range [-pi/2, pi/2].
 // interval Asin(const interval& x) const;
 // void testAsin() const;
 
@@ -22,5 +24,5 @@ interval interval_algebra::Asin(const interval& x) const
 
 void interval_algebra::testAsin() const
 {
-    analyzeumth(10, 1000, "asin", interval(-2, 2), asin, &interval_algebra::Asin);
+    analyzeumth(10, 1000, "asin", interval(-1, 1), asin, &interval_algebra::Asin);
 }

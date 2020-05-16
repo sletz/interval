@@ -190,7 +190,7 @@ void analyzeumth(int E, int M, const char* title, const interval& D, ufun f, umt
             std::cout << "OK    " << e << ": " << title << "(" << X << ") = " << Z << " >= " << Y << " (precision "
                       << precision << ")" << std::endl;
         } else {
-            std::cout << "ERROR " << e << ": " << title << "(" << X << ") = " << Z << " INSTEAD OF" << Y << std::endl;
+            std::cout << "ERROR " << e << ": " << title << "(" << X << ") = " << Z << " INSTEAD OF " << Y << std::endl;
         }
     }
     std::cout << std::endl;
