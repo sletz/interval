@@ -67,8 +67,10 @@ class interval {
     //-------------------------------------------------------------------------
 
     bool isEmpty() const { return fEmpty; }
-    bool hasZero() const { return (fLo <= 0.0) & (fHi >= 0.0); }
-    bool isZero() const { return (fLo == 0.0) & (fHi == 0.0); }
+    bool has(double x) const { return (fLo <= x) & (fHi >= x); }
+    bool is(double x) const { return (fLo == x) & (fHi == x); }
+    bool hasZero() const { return has(0.0); }
+    bool isZero() const { return is(0.0); }
     bool isconst() const { return (fLo == fHi) && !fEmpty; }
 
     bool ispowerof2()
