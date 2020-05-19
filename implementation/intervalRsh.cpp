@@ -13,9 +13,11 @@
 
 interval interval_algebra::Rsh(const interval& x, const interval& y) const
 {
-    return {};
+    interval j{pow(2, -y.hi()), pow(2, -y.lo())};
+    return Mul(x, j);
 }
 
 void interval_algebra::testRsh() const
 {
+    check("test algebra Rsh", Rsh(interval(8, 16), interval(4)), interval(0.5, 1));
 }

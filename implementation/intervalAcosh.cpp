@@ -10,6 +10,7 @@
 // Interval Acosh
 // interval Acosh(const interval& x) const;
 // void testAcosh() const;
+
 static interval domain(1, HUGE_VAL);
 
 interval interval_algebra::Acosh(const interval& x) const

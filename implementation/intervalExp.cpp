@@ -13,9 +13,11 @@
 
 interval interval_algebra::Exp(const interval& x) const
 {
-    return {};
+    if (x.isEmpty()) return x;
+    return {exp(x.lo()), exp(x.hi())};
 }
 
 void interval_algebra::testExp() const
 {
+    analyzeumth(10, 1000, "exp", interval(-100, 10), exp, &interval_algebra::Exp);
 }

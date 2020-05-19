@@ -8,7 +8,6 @@
 
 //------------------------------------------------------------------------------------------
 // Interval Atanh
-//     testAsinh();
 // Calculates the inverse hyperbolic tangent of x; that is the value whose hyperbolic tangent is x.
 // interval Atanh(const interval& x) const;
 // void testAtanh() const;

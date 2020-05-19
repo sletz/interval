@@ -13,7 +13,6 @@ void interval_algebra::testAll()
     testMul();
     testDiv();
     testInv();
-    testLog();
     testNeg();
     testMod();
     testCeil();
@@ -29,4 +28,13 @@ void interval_algebra::testAll()
     testCosh();
     testDelay();
     testEq();
+    testExp();
+    testFloor();
+    testGe();
+    testGt();
+    testInt();
+    testLog();
+    testLog10();
+    testLsh();
+    testRsh();
 }

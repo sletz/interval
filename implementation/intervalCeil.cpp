@@ -13,6 +13,7 @@
 
 interval interval_algebra::Ceil(const interval& x) const
 {
+    if (x.isEmpty()) return {};
     return {ceil(x.lo()), ceil(x.hi())};
 }
 

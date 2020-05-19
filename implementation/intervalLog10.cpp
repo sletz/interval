@@ -23,7 +23,9 @@ interval interval_algebra::Log10(const interval& x) const
 
 void interval_algebra::testLog10() const
 {
-    check("test algebra Log", Log10(interval(1, 10)), interval(log10(1), log10(10)));
-    check("test algebra Log", Log10(interval(0, 10)), interval(log10(0), log10(10)));
-    check("test algebra Log", Log10(interval(-10, 10)), interval(log10(0), log10(10)));
+    analyzeumth(10, 1000, "log10", interval(0, 10), log10, &interval_algebra::Log10);
+
+    // check("test algebra Log", Log10(interval(1, 10)), interval(log10(1), log10(10)));
+    // check("test algebra Log", Log10(interval(0, 10)), interval(log10(0), log10(10)));
+    // check("test algebra Log", Log10(interval(-10, 10)), interval(log10(0), log10(10)));
 }

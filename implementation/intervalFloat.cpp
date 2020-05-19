@@ -13,7 +13,7 @@
 
 interval interval_algebra::Float(const interval& x) const
 {
-    return {};
+    return x;
 }
 
 void interval_algebra::testFloat() const

@@ -13,7 +13,8 @@
 
 interval interval_algebra::Int(const interval& x) const
 {
-    return {};
+    if (x.isEmpty()) return {};
+    return {int(x.lo()), int(x.hi())};
 }
 
 void interval_algebra::testInt() const
