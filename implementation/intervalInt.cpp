@@ -14,7 +14,9 @@
 interval interval_algebra::Int(const interval& x) const
 {
     if (x.isEmpty()) return {};
-    return {int(x.lo()), int(x.hi())};
+    int a = int(x.lo());
+    int b = int(x.hi());
+    return {double(a), double(b)};
 }
 
 void interval_algebra::testInt() const
