@@ -83,11 +83,11 @@ class interval_algebra {
     void     testLsh() const;
     interval Lt(const interval& x, const interval& y) const;
     void     testLt() const;
-    interval Max(const interval& x) const;
+    interval Max(const interval& x, const interval& y) const;
     void     testMax() const;
     interval Mem(const interval& x) const;
     void     testMem() const;
-    interval Min(const interval& x) const;
+    interval Min(const interval& x, const interval& y) const;
     void     testMin() const;
     interval Ne(const interval& x, const interval& y) const;
     void     testNe() const;

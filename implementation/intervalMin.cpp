@@ -11,11 +11,17 @@
 // interval Min(const interval& x) const;
 // void testMin() const;
 
-interval interval_algebra::Min(const interval& x) const
+interval interval_algebra::Min(const interval& x, const interval& y) const
 {
-    return {};
+    if (x.isEmpty() || y.isEmpty()) {
+        return {};
+    } else {
+        return {std::min(x.lo(), y.lo()), std::min(x.hi(), y.hi())};
+    }
 }
 
 void interval_algebra::testMin() const
 {
+    check("test algebra Min", Min(interval(0, 5), interval(-3, 10)), interval(-3, 5));
+    check("test algebra Min", Min(interval(0, 5), interval(-3, -3)), interval(-3, -3));
 }

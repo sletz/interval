@@ -36,5 +36,11 @@ void interval_algebra::testAll()
     testLog();
     testLog10();
     testLsh();
+    testLt();
+    testMax();
+    testMin();
+    testNe();
     testRsh();
+    testNot();
+    testSin();
 }
