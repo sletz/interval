@@ -20,7 +20,7 @@ clean :
 	rm -f testinterval *.orig *.plist
 
 analyze :
-	clang-tidy --extra-arg="--std=c++11" -checks=${ANALYSIS} -header-filter=.* *.cpp implementation/*.cpp
+	clang-tidy --extra-arg="--std=c++11" -checks=${ANALYSIS} -header-filter=.* *.cpp implementation/*.cpp -- -I .
 
 fix :
 	clang-tidy --extra-arg="--std=c++11" -checks=${ANALYSIS} -header-filter=.* *.cpp implementation/*.cpp -fix
