@@ -116,7 +116,7 @@ void analyzemod(interval x, interval y)
     std::cout << std::endl;
 }
 
-void analyzeufun(int E, int M, const char* title, const interval& D, ufun f)
+void analyzeUnaryFunction(int E, int M, const char* title, const interval& D, ufun f)
 {
     std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
     std::default_random_engine             generator(R());
@@ -152,7 +152,7 @@ void analyzeufun(int E, int M, const char* title, const interval& D, ufun f)
     std::cout << std::endl;
 }
 
-void analyzeumth(int E, int M, const char* title, const interval& D, ufun f, umth mp)
+void analyzeUnaryMethod(int E, int M, const char* title, const interval& D, ufun f, umth mp)
 {
     std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
     std::default_random_engine             generator(R());

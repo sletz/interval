@@ -22,5 +22,5 @@ interval interval_algebra::Sqrt(const interval& x) const
 
 void interval_algebra::testSqrt() const
 {
-    analyzeumth(10, 1000, "sqrt", interval(0, 10), sqrt, &interval_algebra::Sqrt);
+    analyzeUnaryMethod(10, 1000, "sqrt", interval(0, 10), sqrt, &interval_algebra::Sqrt);
 }

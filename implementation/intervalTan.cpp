@@ -38,5 +38,5 @@ interval interval_algebra::Tan(const interval& x) const
 
 void interval_algebra::testTan() const
 {
-    analyzeumth(20, 2000, "tan", interval(-M_PI_2, M_PI_2), tan, &interval_algebra::Tan);
+    analyzeUnaryMethod(20, 2000, "tan", interval(-M_PI_2, M_PI_2), tan, &interval_algebra::Tan);
 }

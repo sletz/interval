@@ -19,5 +19,5 @@ interval interval_algebra::Floor(const interval& x) const
 
 void interval_algebra::testFloor() const
 {
-    analyzeumth(10, 1000, "floor", interval(-10, 10), floor, &interval_algebra::Floor);
+    analyzeUnaryMethod(10, 1000, "floor", interval(-10, 10), floor, &interval_algebra::Floor);
 }

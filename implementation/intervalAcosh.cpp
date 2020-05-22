@@ -22,6 +22,6 @@ interval interval_algebra::Acosh(const interval& x) const
 
 void interval_algebra::testAcosh() const
 {
-    analyzeumth(10, 1000, "acosh", interval(1, 1000), acosh, &interval_algebra::Acosh);
-    analyzeumth(10, 1000, "acosh", interval(0, 10), acosh, &interval_algebra::Acosh);
+    analyzeUnaryMethod(10, 1000, "acosh", interval(1, 1000), acosh, &interval_algebra::Acosh);
+    analyzeUnaryMethod(10, 1000, "acosh", interval(0, 10), acosh, &interval_algebra::Acosh);
 }

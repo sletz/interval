@@ -19,5 +19,5 @@ interval interval_algebra::Exp(const interval& x) const
 
 void interval_algebra::testExp() const
 {
-    analyzeumth(10, 1000, "exp", interval(-100, 10), exp, &interval_algebra::Exp);
+    analyzeUnaryMethod(10, 1000, "exp", interval(-100, 10), exp, &interval_algebra::Exp);
 }

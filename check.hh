@@ -19,5 +19,5 @@ using umth = interval (interval_algebra::*)(const interval& x) const;
 interval testfun(int N, bfun f, const interval& x, const interval& y);
 void     analyzemod(interval x, interval y);
 
-void analyzeufun(int E, int M, const char* title, const interval& D, ufun f);
-void analyzeumth(int E, int M, const char* title, const interval& D, ufun f, umth m);
+void analyzeUnaryFunction(int E, int M, const char* title, const interval& D, ufun f);
+void analyzeUnaryMethod(int E, int M, const char* title, const interval& D, ufun f, umth m);

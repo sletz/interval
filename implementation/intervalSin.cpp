@@ -36,5 +36,5 @@ interval interval_algebra::Sin(const interval& x) const
 
 void interval_algebra::testSin() const
 {
-    analyzeumth(20, 2000, "sin", interval(-10 * M_PI, 10 * M_PI), sin, &interval_algebra::Sin);
+    analyzeUnaryMethod(20, 2000, "sin", interval(-10 * M_PI, 10 * M_PI), sin, &interval_algebra::Sin);
 }

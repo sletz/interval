@@ -22,5 +22,5 @@ interval interval_algebra::Atan(const interval& x) const
 
 void interval_algebra::testAtan() const
 {
-    analyzeumth(10, 1000, "atan", interval(-100, 100), atan, &interval_algebra::Atan);
+    analyzeUnaryMethod(10, 1000, "atan", interval(-100, 100), atan, &interval_algebra::Atan);
 }

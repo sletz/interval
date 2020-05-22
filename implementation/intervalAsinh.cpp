@@ -19,5 +19,5 @@ interval interval_algebra::Asinh(const interval& x) const
 
 void interval_algebra::testAsinh() const
 {
-    analyzeumth(10, 1000, "asinh", interval(-10, 10), asinh, &interval_algebra::Asinh);
+    analyzeUnaryMethod(10, 1000, "asinh", interval(-10, 10), asinh, &interval_algebra::Asinh);
 }

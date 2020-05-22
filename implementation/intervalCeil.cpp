@@ -19,5 +19,5 @@ interval interval_algebra::Ceil(const interval& x) const
 
 void interval_algebra::testCeil() const
 {
-    analyzeumth(10, 1000, "ceil", interval(-10, 10), ceil, &interval_algebra::Ceil);
+    analyzeUnaryMethod(10, 1000, "ceil", interval(-10, 10), ceil, &interval_algebra::Ceil);
 }

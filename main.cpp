@@ -85,7 +85,7 @@ int main()
     analyzemod(interval(0, 100), interval(1));
     analyzemod(interval(-100, 100), interval(1));
 
-    analyzeufun(10, 1000, "rint", interval(-10000, 10000), rint);
-    analyzeufun(10, 1000, "floor", interval(-10000, 10000), floor);
-    analyzeufun(10, 1000, "ceil", interval(-10000, 10000), ceil);
+    analyzeUnaryFunction(10, 1000, "rint", interval(-10000, 10000), rint);
+    analyzeUnaryFunction(10, 1000, "floor", interval(-10000, 10000), floor);
+    analyzeUnaryFunction(10, 1000, "ceil", interval(-10000, 10000), ceil);
 }

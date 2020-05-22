@@ -22,5 +22,5 @@ interval interval_algebra::Sinh(const interval& x) const
 
 void interval_algebra::testSinh() const
 {
-    analyzeumth(10, 1000, "sinh", interval(-10, 10), sinh, &interval_algebra::Sinh);
+    analyzeUnaryMethod(10, 1000, "sinh", interval(-10, 10), sinh, &interval_algebra::Sinh);
 }

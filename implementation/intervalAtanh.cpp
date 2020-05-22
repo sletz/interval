@@ -23,5 +23,5 @@ interval interval_algebra::Atanh(const interval& x) const
 
 void interval_algebra::testAtanh() const
 {
-    analyzeumth(10, 1000, "atanh", interval(-0.999, 0.999), atanh, &interval_algebra::Atanh);
+    analyzeUnaryMethod(10, 1000, "atanh", interval(-0.999, 0.999), atanh, &interval_algebra::Atanh);
 }

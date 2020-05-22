@@ -19,5 +19,5 @@ interval interval_algebra::Tanh(const interval& x) const
 
 void interval_algebra::testTanh() const
 {
-    analyzeumth(20, 2000, "tanh", interval(-10 * M_PI, 10 * M_PI), tanh, &interval_algebra::Tanh);
+    analyzeUnaryMethod(20, 2000, "tanh", interval(-10 * M_PI, 10 * M_PI), tanh, &interval_algebra::Tanh);
 }

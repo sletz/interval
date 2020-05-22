@@ -24,5 +24,5 @@ interval interval_algebra::Asin(const interval& x) const
 
 void interval_algebra::testAsin() const
 {
-    analyzeumth(10, 1000, "asin", interval(-1, 1), asin, &interval_algebra::Asin);
+    analyzeUnaryMethod(10, 1000, "asin", interval(-1, 1), asin, &interval_algebra::Asin);
 }

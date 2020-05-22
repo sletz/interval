@@ -22,5 +22,5 @@ interval interval_algebra::Cosh(const interval& x) const
 
 void interval_algebra::testCosh() const
 {
-    analyzeumth(10, 1000, "cosh", interval(-10, 10), cosh, &interval_algebra::Cosh);
+    analyzeUnaryMethod(10, 1000, "cosh", interval(-10, 10), cosh, &interval_algebra::Cosh);
 }
