@@ -13,9 +13,14 @@
 
 interval interval_algebra::Sinh(const interval& x) const
 {
-    return {};
+    if (x.isEmpty()) {
+        return x;
+    } else {
+        return {sinh(x.lo()), sinh(x.hi())};
+    }
 }
 
 void interval_algebra::testSinh() const
 {
+    analyzeumth(10, 1000, "sinh", interval(-10, 10), sinh, &interval_algebra::Sinh);
 }

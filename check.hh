@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+
 #include "interval.hh"
 #include "interval_algebra.hh"
 

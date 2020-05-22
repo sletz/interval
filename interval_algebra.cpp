@@ -43,4 +43,8 @@ void interval_algebra::testAll()
     testRsh();
     testNot();
     testSin();
+    testSinh();
+    testSqrt();
+    testTan();
+    testTanh();
 }

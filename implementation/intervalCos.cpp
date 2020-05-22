@@ -14,6 +14,7 @@
 interval interval_algebra::Cos(const interval& x) const
 {
     double TWOPI = 2 * M_PI;
+    if (x.isEmpty()) return {};
     if (x.size() >= TWOPI) {
         return {-1, 1};
     } else {
