@@ -195,3 +195,55 @@ void analyzeUnaryMethod(int E, int M, const char* title, const interval& D, ufun
     }
     std::cout << std::endl;
 }
+
+void analyzeBinaryMethod(int E, int M, const char* title, const interval& Dx, const interval& Dy, bfun f, bmth bm)
+{
+    std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine             generator(R());
+    std::uniform_real_distribution<double> rdx(Dx.lo(), Dx.hi());
+    std::uniform_real_distribution<double> rdy(Dy.lo(), Dy.hi());
+    interval_algebra                       A;
+
+    std::cout << "Analysis of " << title << " in domains " << Dx << " x " << Dy << std::endl;
+
+    for (int e = 0; e < E; e++) {  // for each experiments
+
+        // X: random input interval X < Dx
+        double   x0 = rdx(generator);
+        double   x1 = rdx(generator);
+        interval X(std::min(x0, x1), std::max(x0, x1));
+
+        // Y: random input interval Y < Dy
+        double   y0 = rdy(generator);
+        double   y1 = rdy(generator);
+        interval Y(std::min(y0, y1), std::max(y0, y1));
+
+        // boundaries of the resulting interval Z
+        double zlo = HUGE_VAL;   // std::min(t0, t1);
+        double zhi = -HUGE_VAL;  // std::max(t0, t1);
+
+        // random values in X
+        std::uniform_real_distribution<double> rvx(X.lo(), X.hi());
+        std::uniform_real_distribution<double> rvy(Y.lo(), Y.hi());
+
+        for (int m = 0; m < M; m++) {  // M measurements
+            double z = f(rvx(generator), rvy(generator));
+            if (!std::isnan(z)) {
+                if (z < zlo) zlo = z;
+                if (z > zhi) zhi = z;
+            }
+        }
+        interval Zm(zlo, zhi);               // the measured Z
+        interval Zc        = (A.*bm)(X, Y);  // the computed Z
+        double   precision = Zm.size() / Zc.size();
+
+        if (Zc >= Zm) {
+            std::cout << "OK    " << e << ": " << title << "(" << X << "," << Y << ") = " << Zc << " >= " << Zm
+                      << " (precision " << precision << ")" << std::endl;
+        } else {
+            std::cout << "ERROR " << e << ": " << title << "(" << X << "," << Y << ") = " << Zc << " INSTEAD OF " << Zm
+                      << std::endl;
+        }
+    }
+    std::cout << std::endl;
+}
