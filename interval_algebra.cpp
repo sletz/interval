@@ -20,6 +20,7 @@ void interval_algebra::testAll()
     testRint();
     testAcos();
     testAcosh();
+    testAnd();
     testAsin();
     testAsinh();
     testAtan();
@@ -47,4 +48,5 @@ void interval_algebra::testAll()
     testSqrt();
     testTan();
     testTanh();
+    testMem();
 }
