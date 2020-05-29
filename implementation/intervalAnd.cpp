@@ -87,7 +87,7 @@ interval bmAnd(const interval& x, int mask)
         }
     }
 }
-
+/*
 interval interval_algebra::And(const interval& x, const interval& y) const
 {
     if (x.isEmpty() || y.isEmpty()) return {};
@@ -105,6 +105,29 @@ interval interval_algebra::And(const interval& x, const interval& y) const
             return {-13, -11};
         }
     }
+}
+*/
+
+// BRUTE FORCE
+interval interval_algebra::And(const interval& x, const interval& y) const
+{
+    if (x.isEmpty() || y.isEmpty()) return {};
+    int x0 = x.lo();
+    int x1 = x.hi();
+    int y0 = y.lo();
+    int y1 = y.hi();
+
+    int z0 = INT32_MAX;
+    int z1 = INT32_MIN;
+
+    for (int i = x0; i <= x1; i++) {
+        for (int j = y0; j <= y1; j++) {
+            int z = i & j;
+            if (z < z0) z0 = z;
+            if (z > z1) z1 = z;
+        }
+    }
+    return interval(double(z0), double(z1));
 }
 
 void interval_algebra::testAnd() const
