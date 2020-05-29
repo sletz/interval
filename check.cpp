@@ -238,10 +238,10 @@ void analyzeBinaryMethod(int E, int M, const char* title, const interval& Dx, co
         double   precision = Zm.size() / Zc.size();
 
         if (Zc >= Zm) {
-            std::cout << "OK    " << e << ": " << title << "(" << X << "," << Y << ") = " << Zc << " >= " << Zm
+            std::cout << "OK    " << e << ": " << title << "(" << X << "," << Y << ") =c=> " << Zc << " >= " << Zm
                       << " (precision " << precision << ")" << std::endl;
         } else {
-            std::cout << "ERROR " << e << ": " << title << "(" << X << "," << Y << ") = " << Zc << " INSTEAD OF " << Zm
+            std::cout << "ERROR " << e << ": " << title << "(" << X << "," << Y << ") =c=> " << Zc << " != " << Zm
                       << std::endl;
         }
     }
