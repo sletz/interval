@@ -33,9 +33,8 @@
 
 class interval {
    private:
-    bool   fEmpty{true};  ///< true when the interval is empty
-    double fLo{NAN};      ///< minimal value
-    double fHi{NAN};      ///< maximal value
+    double fLo{NAN};  ///< minimal value
+    double fHi{NAN};  ///< maximal value
 
    public:
     //-------------------------------------------------------------------------
@@ -47,13 +46,11 @@ class interval {
     interval(double n, double m)
     {
         if (std::isnan(n) || std::isnan(m)) {
-            fEmpty = true;
-            fLo    = NAN;
-            fHi    = NAN;
+            fLo = NAN;
+            fHi = NAN;
         } else {
-            fEmpty = false;
-            fLo    = std::min(n, m);
-            fHi    = std::max(n, m);
+            fLo = std::min(n, m);
+            fHi = std::max(n, m);
         }
     }
 
@@ -66,12 +63,12 @@ class interval {
     // basic properties
     //-------------------------------------------------------------------------
 
-    bool isEmpty() const { return fEmpty; }
+    bool isEmpty() const { return std::isnan(fLo) | std::isnan(fHi); }
     bool has(double x) const { return (fLo <= x) & (fHi >= x); }
     bool is(double x) const { return (fLo == x) & (fHi == x); }
     bool hasZero() const { return has(0.0); }
     bool isZero() const { return is(0.0); }
-    bool isconst() const { return (fLo == fHi) && !fEmpty; }
+    bool isconst() const { return (fLo == fHi) && !std::isnan(fLo); }
 
     bool ispowerof2()
     {
