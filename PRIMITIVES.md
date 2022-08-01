@@ -3,7 +3,7 @@ As extracted from Faust grammar. The user interface primitives where removed...
 
 | Faust Grammar   | Interval Method   |
 | --------------- | ----------------- |
-| ABS             |                   |
+| ABS             | Abs               |
 | ACOS            | Acos              |
 |                 | Acosh             |
 | ADD             | Add               |

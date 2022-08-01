@@ -4,6 +4,9 @@
 
 class interval_algebra {
    public:
+    interval Abs(const interval& x) const;
+    void     testAbs() const;
+    //
     interval Add(const interval& x, const interval& y) const;
     void     testAdd() const;
     //

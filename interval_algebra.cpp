@@ -8,6 +8,7 @@
 
 void interval_algebra::testAll()
 {
+    testAbs();
     testAcos();
     testAcosh();
     testAdd();

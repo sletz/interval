@@ -38,3 +38,4 @@
 # test executable
 testinterval
 *.dSYM
+.DS_Store
