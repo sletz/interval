@@ -39,3 +39,4 @@
 testinterval
 *.dSYM
 .DS_Store
+*.o.json
