@@ -19,5 +19,6 @@ interval interval_algebra::Float(const interval& x) const
 
 void interval_algebra::testFloat() const
 {
+    std::cout << "OK: Float no tests needed" << std::endl;
 }
 }  // namespace itv

@@ -22,5 +22,6 @@ interval interval_algebra::Int(const interval& x) const
 
 void interval_algebra::testInt() const
 {
+    std::cout << "OK: Int no tests needed" << std::endl;
 }
 }  // namespace itv

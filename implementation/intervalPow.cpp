@@ -14,10 +14,24 @@ namespace itv {
 
 interval interval_algebra::Pow(const interval& x, const interval& y) const
 {
-    return {};
+    if (x.lo() > 0) {
+        // Simple case
+        return Exp(Mul(y, Log(x)));
+
+    } else {
+        return {};
+    }
+}
+
+static double myPow(double x, double y)
+{
+    return pow(x, y);
 }
 
 void interval_algebra::testPow() const
 {
+    analyzeBinaryMethod(10, 2000, "Pow", interval(1, 1000), interval(-10, 10), myPow, &interval_algebra::Pow);
+    analyzeBinaryMethod(10, 2000, "Pow", interval(0.001, 1), interval(-10, 10), myPow, &interval_algebra::Pow);
+    analyzeBinaryMethod(10, 2000, "Pow", interval(0.001, 10), interval(-20, 20), myPow, &interval_algebra::Pow);
 }
 }  // namespace itv

@@ -24,7 +24,7 @@ void interval_algebra::testAll()
     testDiv();
     testEq();
     testExp();
-    testFloor();
+    testFloat();
     testFloor();
     testGe();
     testGt();
@@ -43,6 +43,7 @@ void interval_algebra::testAll()
     testNeg();
     testNot();
     testOr();
+    testPow();
     testRint();
     testRsh();
     testSin();

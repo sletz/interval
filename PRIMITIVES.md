@@ -15,7 +15,8 @@ As extracted from Faust grammar. The user interface primitives where removed...
 | ATTACH          |                   |
 | CEIL            | Ceil              |
 | COS             | Cos               |
-| DELAY1          | Mem ?             |
+|                 | Cosh              |
+| DELAY1          | Delay             |
 | DIV             | Div               |
 | EQ              | Eq                |
 | EXP             | Exp               |
