@@ -5,22 +5,23 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
-void check(const std::string& testname, const interval& exp);
+void check(const std::string& testname, const itv::interval& exp);
 
-void check(const std::string& testname, const interval& exp, const interval& res);
+void check(const std::string& testname, const itv::interval& exp, const itv::interval& res);
 
 void check(const std::string& testname, bool exp, bool res);
 
 using ufun = double (*)(double);
 using bfun = double (*)(double, double);
 
-using umth = interval (interval_algebra::*)(const interval& x) const;
-using bmth = interval (interval_algebra::*)(const interval& x, const interval& y) const;
+using umth = itv::interval (itv::interval_algebra::*)(const itv::interval& x) const;
+using bmth = itv::interval (itv::interval_algebra::*)(const itv::interval& x, const itv::interval& y) const;
 
-interval testfun(int N, bfun f, const interval& x, const interval& y);
-void     analyzemod(interval x, interval y);
+itv::interval testfun(int N, bfun f, const itv::interval& x, const itv::interval& y);
+void          analyzemod(itv::interval x, itv::interval y);
 
-void analyzeUnaryFunction(int E, int M, const char* title, const interval& D, ufun f);
-void analyzeUnaryMethod(int E, int M, const char* title, const interval& D, ufun f, umth m);
+void analyzeUnaryFunction(int E, int M, const char* title, const itv::interval& D, ufun f);
+void analyzeUnaryMethod(int E, int M, const char* title, const itv::interval& D, ufun f, umth m);
 
-void analyzeBinaryMethod(int E, int M, const char* title, const interval& C, const interval& D, bfun f, bmth m);
+void analyzeBinaryMethod(int E, int M, const char* title, const itv::interval& C, const itv::interval& D, bfun f,
+                         bmth m);

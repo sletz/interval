@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Asinh
 // interval Asinh(const interval& x) const;
@@ -21,3 +22,4 @@ void interval_algebra::testAsinh() const
 {
     analyzeUnaryMethod(10, 1000, "asinh", interval(-10, 10), asinh, &interval_algebra::Asinh);
 }
+}  // namespace itv

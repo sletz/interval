@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //==========================================================================================
 //
 // interval multiplication
@@ -49,3 +50,4 @@ void interval_algebra::testMul() const
     check("test algebra Mul", Mul(interval(0), interval(-HUGE_VAL, HUGE_VAL)), interval(0));
     check("test algebra Mul", Mul(interval(-HUGE_VAL, HUGE_VAL), interval(0)), interval(0));
 }
+}  // namespace itv

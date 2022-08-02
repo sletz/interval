@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // modulo function on intervals
 // (see https://stackoverflow.com/questions/31057473/calculating-the-modulo-of-two-intervals)
@@ -74,3 +75,4 @@ void interval_algebra::testMod() const
     check("test algebra Mod", Mod(interval(-7, 7), interval(8, 10)), interval(-7, 7));
     check("test algebra Mod", Mod(interval(0, 100), interval(7, 7)), interval(0, nextafter(7.0, 0.0)));
 }
+}  // namespace itv

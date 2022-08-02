@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Acos
 // interval Acos(const interval& x) const;
@@ -23,3 +24,4 @@ void interval_algebra::testAcos() const
 {
     analyzeUnaryMethod(10, 1000, "acos", interval(-1, 1), acos, &interval_algebra::Acos);
 }
+}  // namespace itv

@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval substraction
 
@@ -22,3 +23,4 @@ void interval_algebra::testSub() const
 {
     check("test algebra Sub", Sub(interval(0, 100), interval(10, 500)), interval(-500, 90));
 }
+}  // namespace itv

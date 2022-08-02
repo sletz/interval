@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Rsh
 // interval Rsh(const interval& x, const interval& y) const;
@@ -21,3 +22,4 @@ void interval_algebra::testRsh() const
 {
     check("test algebra Rsh", Rsh(interval(8, 16), interval(4)), interval(0.5, 1));
 }
+}  // namespace itv

@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Tan
 // interval Tan(const interval& x) const;
@@ -40,3 +41,4 @@ void interval_algebra::testTan() const
 {
     analyzeUnaryMethod(20, 2000, "tan", interval(-M_PI_2, M_PI_2), tan, &interval_algebra::Tan);
 }
+}  // namespace itv

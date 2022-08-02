@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Atanh
 // Calculates the inverse hyperbolic tangent of x; that is the value whose hyperbolic tangent is x.
@@ -25,3 +26,4 @@ void interval_algebra::testAtanh() const
 {
     analyzeUnaryMethod(10, 1000, "atanh", interval(-0.999, 0.999), atanh, &interval_algebra::Atanh);
 }
+}  // namespace itv

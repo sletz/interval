@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Or
 // interval Or(const interval& x, const interval& y) const;
@@ -48,3 +49,4 @@ void interval_algebra::testOr() const
     analyzeBinaryMethod(10, 2000, "Or", interval(0, 1000), interval(63, 127), myOr, &interval_algebra::Or);
     analyzeBinaryMethod(10, 2000, "Or", interval(-1000, 1000), interval(63, 127), myOr, &interval_algebra::Or);
 }
+}  // namespace itv

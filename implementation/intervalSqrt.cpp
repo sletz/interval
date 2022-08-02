@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Sqrt
 // interval Sqrt(const interval& x) const;
@@ -24,3 +25,4 @@ void interval_algebra::testSqrt() const
 {
     analyzeUnaryMethod(10, 1000, "sqrt", interval(0, 10), sqrt, &interval_algebra::Sqrt);
 }
+}  // namespace itv

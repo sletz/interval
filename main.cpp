@@ -6,6 +6,8 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+using namespace itv;
+
 int main()
 {
     // test interval representation

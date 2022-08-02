@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Atan2
 // interval Atan2(const interval& x, const interval& y) const;
@@ -18,4 +19,5 @@ interval interval_algebra::Atan2(const interval& x, const interval& y) const
 
 void interval_algebra::testAtan2() const
 {
+}
 }

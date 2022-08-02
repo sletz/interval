@@ -5,7 +5,7 @@
 #include "check.hh"
 #include "interval.hh"
 #include "interval_algebra.hh"
-
+namespace itv {
 void interval_algebra::testAll()
 {
     testAbs();
@@ -53,3 +53,4 @@ void interval_algebra::testAll()
     testTanh();
     testXor();
 }
+}  // namespace itv

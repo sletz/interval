@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Floor
 // interval Floor(const interval& x) const;
@@ -21,3 +22,4 @@ void interval_algebra::testFloor() const
 {
     analyzeUnaryMethod(10, 1000, "floor", interval(-10, 10), floor, &interval_algebra::Floor);
 }
+}  // namespace itv

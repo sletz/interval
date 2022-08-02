@@ -2,6 +2,7 @@
 
 #include "interval.hh"
 
+namespace itv {
 class interval_algebra {
    public:
     interval Abs(const interval& x) const;
@@ -121,3 +122,4 @@ class interval_algebra {
 
     void testAll();
 };
+}  // namespace itv

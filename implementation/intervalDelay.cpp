@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Delay
 // interval Delay(const interval& x) const;
@@ -24,3 +25,4 @@ void interval_algebra::testDelay() const
     check("test algebra Delay", Delay(interval(5), interval(0)), interval(5));
     check("test algebra Delay", Delay(interval(-1, 1), interval(0, 10)), interval(-1, 1));
 }
+}  // namespace itv

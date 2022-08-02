@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Min
 // interval Min(const interval& x) const;
@@ -25,3 +26,4 @@ void interval_algebra::testMin() const
     check("test algebra Min", Min(interval(0, 5), interval(-3, 10)), interval(-3, 5));
     check("test algebra Min", Min(interval(0, 5), interval(-3, -3)), interval(-3, -3));
 }
+}  // namespace itv

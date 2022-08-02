@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Atan
 // Calculates the principal value of the arc tangent of x; that is the value whose tangent is x.
@@ -24,3 +25,4 @@ void interval_algebra::testAtan() const
 {
     analyzeUnaryMethod(10, 1000, "atan", interval(-100, 100), atan, &interval_algebra::Atan);
 }
+}  // namespace itv

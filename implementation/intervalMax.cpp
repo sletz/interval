@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Max
 // interval Max(const interval& x) const;
@@ -25,3 +26,4 @@ void interval_algebra::testMax() const
     check("test algebra Max", Max(interval(0, 5), interval(-3, 10)), interval(0, 10));
     check("test algebra Max", Max(interval(0, 5), interval(-3, -3)), interval(0, 5));
 }
+}  // namespace itv

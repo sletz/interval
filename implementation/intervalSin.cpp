@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Sin
 // interval Sin(const interval& x) const;
@@ -38,3 +39,4 @@ void interval_algebra::testSin() const
 {
     analyzeUnaryMethod(20, 2000, "sin", interval(-10 * M_PI, 10 * M_PI), sin, &interval_algebra::Sin);
 }
+}  // namespace itv

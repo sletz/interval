@@ -6,6 +6,8 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
+
 //------------------------------------------------------------------------------------------
 // Interval addition
 
@@ -22,3 +24,4 @@ void interval_algebra::testAdd() const
 {
     check("test algebra Add", Add(interval(0, 100), interval(10, 500)), interval(10, 600));
 }
+}  // namespace itv

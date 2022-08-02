@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval division
 
@@ -30,3 +31,4 @@ void interval_algebra::testDiv() const
     //     check("test algebra Div", Div(interval(0), interval(0)), interval(0));
     //     check("test algebra Div", Div(interval(0, 1), interval(0, 1)), interval(0, +HUGE_VAL));
 }
+}  // namespace itv

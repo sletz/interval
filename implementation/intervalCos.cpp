@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Cos
 // interval Cos(const interval& x) const;
@@ -39,3 +40,4 @@ void interval_algebra::testCos() const
 {
     analyzeUnaryMethod(20, 2000, "cos", interval(-10 * M_PI, 10 * M_PI), cos, &interval_algebra::Cos);
 }
+}  // namespace itv

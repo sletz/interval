@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Cosh
 // interval Cosh(const interval& x) const;
@@ -24,3 +25,4 @@ void interval_algebra::testCosh() const
 {
     analyzeUnaryMethod(10, 1000, "cosh", interval(-10, 10), cosh, &interval_algebra::Cosh);
 }
+}  // namespace itv

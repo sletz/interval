@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Pow
 // interval Pow(const interval& x, const interval& y) const;
@@ -19,3 +20,4 @@ interval interval_algebra::Pow(const interval& x, const interval& y) const
 void interval_algebra::testPow() const
 {
 }
+}  // namespace itv

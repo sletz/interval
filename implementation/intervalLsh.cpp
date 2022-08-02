@@ -7,6 +7,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Lsh
 // interval Lsh(const interval& x, const interval& y) const;
@@ -24,3 +25,4 @@ void interval_algebra::testLsh() const
     check("test algebra Lsh", Lsh(interval(0.5, 1), interval(-1, 4)), interval(0.25, 16));
     check("test algebra Lsh", Lsh(interval(-10, 10), interval(-1, 4)), interval(-160, 160));
 }
+}  // namespace itv

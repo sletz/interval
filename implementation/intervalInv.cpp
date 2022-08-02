@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval inverse
 
@@ -31,3 +32,4 @@ void interval_algebra::testInv() const
     check("test algebra Inv", Inv(interval(-20, +20)), interval(-HUGE_VAL, +HUGE_VAL));
     check("test algebra Inv", Inv(interval(0, 0)), interval(+HUGE_VAL, +HUGE_VAL));
 }
+}  // namespace itv

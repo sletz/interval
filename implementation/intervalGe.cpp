@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Ge
 // interval Ge(const interval& x, const interval& y) const;
@@ -25,3 +26,4 @@ void interval_algebra::testGe() const
     check("test algebra Ge", Ge(interval(2, 5), interval(0, 1)), interval(1));
     check("test algebra Ge", Ge(interval(-1, 1), interval(0, 10)), interval(0, 1));
 }
+}  // namespace itv

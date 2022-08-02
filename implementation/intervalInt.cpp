@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Int
 // interval Int(const interval& x) const;
@@ -22,3 +23,4 @@ interval interval_algebra::Int(const interval& x) const
 void interval_algebra::testInt() const
 {
 }
+}  // namespace itv

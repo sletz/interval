@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Exp
 // interval Exp(const interval& x) const;
@@ -21,3 +22,4 @@ void interval_algebra::testExp() const
 {
     analyzeUnaryMethod(10, 1000, "exp", interval(-100, 10), exp, &interval_algebra::Exp);
 }
+}  // namespace itv

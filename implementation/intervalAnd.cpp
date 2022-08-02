@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval And
 // interval And(const interval& x, const interval& y) const;
@@ -138,3 +139,4 @@ void interval_algebra::testAnd() const
     analyzeBinaryMethod(10, 2000, "And", interval(0, 1000), interval(63, 127), myAnd, &interval_algebra::And);
     analyzeBinaryMethod(10, 2000, "And", interval(-1000, 1000), interval(63, 127), myAnd, &interval_algebra::And);
 }
+}  // namespace itv

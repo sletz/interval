@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // negation, invert sign of an interval
 
@@ -23,3 +24,4 @@ void interval_algebra::testNeg() const
     check("test algebra Neg", Neg(interval(-1, 1)), interval(-1, 1));
     check("test algebra Neg", Neg(interval(-10, 1)), interval(-1, 10));
 }
+}  // namespace itv

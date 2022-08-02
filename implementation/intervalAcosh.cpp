@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Acosh
 // interval Acosh(const interval& x) const;
@@ -25,3 +26,4 @@ void interval_algebra::testAcosh() const
     analyzeUnaryMethod(10, 1000, "acosh", interval(1, 1000), acosh, &interval_algebra::Acosh);
     analyzeUnaryMethod(10, 1000, "acosh", interval(0, 10), acosh, &interval_algebra::Acosh);
 }
+}  // namespace itv

@@ -27,10 +27,10 @@
 // ***************************************************************************
 //
 //     An Interval is a (possibly empty) set of numbers approximated by two
-//     boundaries
+//     boundaries. Empty intervals have NAN as boundaries.
 //
 //****************************************************************************
-
+namespace itv {
 class interval {
    private:
     double fLo{NAN};  ///< minimal value
@@ -169,3 +169,4 @@ inline bool operator>(const interval& i, const interval& j)
 {
     return j < i;
 }
+}  // namespace itv

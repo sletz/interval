@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Log
 // interval Log(const interval& x) const;
@@ -29,3 +30,4 @@ void interval_algebra::testLog() const
     // check("test algebra Log", Log(interval(0, 10)), interval(log(0), log(10)));
     // check("test algebra Log", Log(interval(-10, 10)), interval(log(0), log(10)));
 }
+}  // namespace itv

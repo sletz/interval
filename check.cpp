@@ -12,7 +12,7 @@
  * @param expected interval as a string
  * @param exp interval to test
  */
-void check(const std::string& expected, const interval& exp)
+void check(const std::string& expected, const itv::interval& exp)
 {
     std::stringstream ss;
     ss << exp;
@@ -30,7 +30,7 @@ void check(const std::string& expected, const interval& exp)
  * @param exp
  * @param res
  */
-void check(const std::string& testname, const interval& exp, const interval& res)
+void check(const std::string& testname, const itv::interval& exp, const itv::interval& res)
 {
     if (exp == res) {
         std::cout << "OK: " << testname << " " << exp << std::endl;
@@ -75,7 +75,7 @@ static double max4(double a, double b, double c, double d)
     return std::max(std::max(a, b), std::max(c, d));
 }
 
-interval testfun(int N, bfun f, const interval& x, const interval& y)
+itv::interval testfun(int N, bfun f, const itv::interval& x, const itv::interval& y)
 {
     std::random_device                     rd;  // used to generate a random seed, based on some hardware randomness
     std::default_random_engine             generator(rd());
@@ -108,15 +108,15 @@ interval testfun(int N, bfun f, const interval& x, const interval& y)
  * @param x first argument interval
  * @param y second argument interval
  */
-void analyzemod(interval x, interval y)
+void analyzemod(itv::interval x, itv::interval y)
 {
-    interval_algebra A;
+    itv::interval_algebra A;
     std::cout << "simulated fmod(" << x << "," << y << ") = " << testfun(10000, fmod, x, y) << std::endl;
     std::cout << "computed  fmod(" << x << "," << y << ") = " << A.Mod(x, y) << std::endl;
     std::cout << std::endl;
 }
 
-void analyzeUnaryFunction(int E, int M, const char* title, const interval& D, ufun f)
+void analyzeUnaryFunction(int E, int M, const char* title, const itv::interval& D, ufun f)
 {
     std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
     std::default_random_engine             generator(R());
@@ -127,9 +127,9 @@ void analyzeUnaryFunction(int E, int M, const char* title, const interval& D, uf
     for (int e = 0; e < E; e++) {  // E experiments
 
         // X: random input interval X < I
-        double   a = rd(generator);
-        double   b = rd(generator);
-        interval X(std::min(a, b), std::max(a, b));
+        double        a = rd(generator);
+        double        b = rd(generator);
+        itv::interval X(std::min(a, b), std::max(a, b));
 
         // [ylo,yhi] initial f(X) interval
         double t0 = f(X.lo());
@@ -145,28 +145,28 @@ void analyzeUnaryFunction(int E, int M, const char* title, const interval& D, uf
             if (y < y0) y0 = y;
             if (y > y1) y1 = y;
         }
-        interval Y(y0, y1);
+        itv::interval Y(y0, y1);
 
         std::cout << e << ": " << title << "(" << X << ") = " << Y << std::endl;
     }
     std::cout << std::endl;
 }
 
-void analyzeUnaryMethod(int E, int M, const char* title, const interval& D, ufun f, umth mp)
+void analyzeUnaryMethod(int E, int M, const char* title, const itv::interval& D, ufun f, umth mp)
 {
     std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
     std::default_random_engine             generator(R());
     std::uniform_real_distribution<double> rd(D.lo(), D.hi());
-    interval_algebra                       A;
+    itv::interval_algebra                  A;
 
     std::cout << "Analysis of " << title << " in domain " << D << std::endl;
 
     for (int e = 0; e < E; e++) {  // E experiments
 
         // X: random input interval X < I
-        double   a = rd(generator);
-        double   b = rd(generator);
-        interval X(std::min(a, b), std::max(a, b));
+        double        a = rd(generator);
+        double        b = rd(generator);
+        itv::interval X(std::min(a, b), std::max(a, b));
 
         // boundaries of the resulting interval
         double y0 = HUGE_VAL;   // std::min(t0, t1);
@@ -182,11 +182,12 @@ void analyzeUnaryMethod(int E, int M, const char* title, const interval& D, ufun
                 if (y > y1) y1 = y;
             }
         }
-        interval Y(y0, y1);
-        interval Z         = (A.*mp)(X);
-        double   precision = Y.size() / Z.size();
+        itv::interval Y(y0, y1);
+        itv::interval Z = (A.*mp)(X);
 
         if (Z >= Y) {
+            double precision = (Z.size() == 0) ? 1 : Y.size() / Z.size();
+
             std::cout << "OK    " << e << ": " << title << "(" << X << ") = " << Z << " >= " << Y << " (precision "
                       << precision << ")" << std::endl;
         } else {
@@ -196,27 +197,28 @@ void analyzeUnaryMethod(int E, int M, const char* title, const interval& D, ufun
     std::cout << std::endl;
 }
 
-void analyzeBinaryMethod(int E, int M, const char* title, const interval& Dx, const interval& Dy, bfun f, bmth bm)
+void analyzeBinaryMethod(int E, int M, const char* title, const itv::interval& Dx, const itv::interval& Dy, bfun f,
+                         bmth bm)
 {
     std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
     std::default_random_engine             generator(R());
     std::uniform_real_distribution<double> rdx(Dx.lo(), Dx.hi());
     std::uniform_real_distribution<double> rdy(Dy.lo(), Dy.hi());
-    interval_algebra                       A;
+    itv::interval_algebra                  A;
 
     std::cout << "Analysis of " << title << " in domains " << Dx << " x " << Dy << std::endl;
 
     for (int e = 0; e < E; e++) {  // for each experiments
 
         // X: random input interval X < Dx
-        double   x0 = rdx(generator);
-        double   x1 = rdx(generator);
-        interval X(std::min(x0, x1), std::max(x0, x1));
+        double        x0 = rdx(generator);
+        double        x1 = rdx(generator);
+        itv::interval X(std::min(x0, x1), std::max(x0, x1));
 
         // Y: random input interval Y < Dy
-        double   y0 = rdy(generator);
-        double   y1 = rdy(generator);
-        interval Y(std::min(y0, y1), std::max(y0, y1));
+        double        y0 = rdy(generator);
+        double        y1 = rdy(generator);
+        itv::interval Y(std::min(y0, y1), std::max(y0, y1));
 
         // boundaries of the resulting interval Z
         double zlo = HUGE_VAL;   // std::min(t0, t1);
@@ -233,9 +235,9 @@ void analyzeBinaryMethod(int E, int M, const char* title, const interval& Dx, co
                 if (z > zhi) zhi = z;
             }
         }
-        interval Zm(zlo, zhi);               // the measured Z
-        interval Zc        = (A.*bm)(X, Y);  // the computed Z
-        double   precision = Zm.size() / Zc.size();
+        itv::interval Zm(zlo, zhi);               // the measured Z
+        itv::interval Zc        = (A.*bm)(X, Y);  // the computed Z
+        double        precision = Zm.size() / Zc.size();
 
         if (Zc >= Zm) {
             std::cout << "OK    " << e << ": " << title << "(" << X << "," << Y << ") =c=> " << Zc << " >= " << Zm

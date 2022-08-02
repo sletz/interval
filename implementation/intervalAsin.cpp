@@ -6,6 +6,8 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
+
 //------------------------------------------------------------------------------------------
 // Interval Asin
 // Calculates the principal value of the arc sine of x; that is the value whose sine is x.
@@ -26,3 +28,4 @@ void interval_algebra::testAsin() const
 {
     analyzeUnaryMethod(10, 1000, "asin", interval(-1, 1), asin, &interval_algebra::Asin);
 }
+}  // namespace itv

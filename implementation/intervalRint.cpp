@@ -6,6 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 
+namespace itv {
 //------------------------------------------------------------------------------------------
 // Interval Rint
 // interval Rint(const interval& x) const;
@@ -20,3 +21,4 @@ void interval_algebra::testRint() const
 {
     check("test algebra Rint", Rint(interval(-3.1, 5.9)), interval(-3, 6));
 }
+}  // namespace itv
