@@ -15,7 +15,7 @@ namespace itv {
 // interval Asin(const interval& x) const;
 // void testAsin() const;
 
-static interval domain(-1, 1);
+static const interval domain(-1, 1);
 
 interval interval_algebra::Asin(const interval& x) const
 {

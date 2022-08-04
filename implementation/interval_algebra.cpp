@@ -6,7 +6,7 @@
 #include "interval.hh"
 #include "interval_algebra.hh"
 namespace itv {
-void interval_algebra::testAll()
+void interval_algebra::testAll() const
 {
     testAbs();
     testAcos();

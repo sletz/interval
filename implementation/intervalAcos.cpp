@@ -12,8 +12,9 @@ namespace itv {
 // interval Acos(const interval& x) const;
 // void testAcos() const;
 
-static interval AcosDomain(-1, 1);
-interval        interval_algebra::Acos(const interval& x) const
+static const interval AcosDomain(-1, 1);
+
+interval interval_algebra::Acos(const interval& x) const
 {
     interval i = intersection(AcosDomain, x);
     if (i.isEmpty()) return i;

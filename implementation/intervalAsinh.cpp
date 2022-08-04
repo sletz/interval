@@ -11,7 +11,7 @@ namespace itv {
 // Interval Asinh
 // interval Asinh(const interval& x) const;
 // void testAsinh() const;
-static interval domain(-HUGE_VAL, HUGE_VAL);
+static const interval domain(-HUGE_VAL, HUGE_VAL);
 
 interval interval_algebra::Asinh(const interval& x) const
 {

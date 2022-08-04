@@ -63,23 +63,25 @@ class interval {
     // basic properties
     //-------------------------------------------------------------------------
 
-    bool isEmpty() const { return std::isnan(fLo) | std::isnan(fHi); }
-    bool has(double x) const { return (fLo <= x) & (fHi >= x); }
-    bool is(double x) const { return (fLo == x) & (fHi == x); }
+    bool isEmpty() const { return std::isnan(fLo) || std::isnan(fHi); }
+    bool has(double x) const { return (fLo <= x) && (fHi >= x); }
+    bool is(double x) const { return (fLo == x) && (fHi == x); }
     bool hasZero() const { return has(0.0); }
     bool isZero() const { return is(0.0); }
     bool isconst() const { return (fLo == fHi) && !std::isnan(fLo); }
 
-    bool ispowerof2()
+    bool ispowerof2() const
     {
-        int n = int(fHi);
+        auto n = int(fHi);
         return isconst() && ((n & (-n)) == n);
     }
-    bool isbitmask()
+
+    bool isbitmask() const
     {
         int n = int(fHi) + 1;
         return isconst() && ((n & (-n)) == n);
     }
+
     double lo() const { return fLo; }
     double hi() const { return fHi; }
     double size() const { return fHi - fLo; }

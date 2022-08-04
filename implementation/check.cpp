@@ -77,10 +77,10 @@ static double max4(double a, double b, double c, double d)
 
 itv::interval testfun(int N, bfun f, const itv::interval& x, const itv::interval& y)
 {
-    std::random_device                     rd;  // used to generate a random seed, based on some hardware randomness
-    std::default_random_engine             generator(rd());
-    std::uniform_real_distribution<double> rx(x.lo(), x.hi());
-    std::uniform_real_distribution<double> ry(y.lo(), y.hi());
+    std::random_device             rd;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine     generator(rd());
+    std::uniform_real_distribution rx(x.lo(), x.hi());
+    std::uniform_real_distribution ry(y.lo(), y.hi());
 
     double a = f(x.lo(), y.lo());
     double b = f(x.lo(), y.hi());
@@ -118,9 +118,9 @@ void analyzemod(itv::interval x, itv::interval y)
 
 void analyzeUnaryFunction(int E, int M, const char* title, const itv::interval& D, ufun f)
 {
-    std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
-    std::default_random_engine             generator(R());
-    std::uniform_real_distribution<double> rd(D.lo(), D.hi());
+    std::random_device             R;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine     generator(R());
+    std::uniform_real_distribution rd(D.lo(), D.hi());
 
     std::cout << "Analysis of " << title << " in domain " << D << std::endl;
 
@@ -138,7 +138,7 @@ void analyzeUnaryFunction(int E, int M, const char* title, const itv::interval& 
         double y1 = std::max(t0, t1);
 
         // random values in X
-        std::uniform_real_distribution<double> rx(X.lo(), X.hi());
+        std::uniform_real_distribution rx(X.lo(), X.hi());
 
         for (int m = 0; m < M; m++) {  // M measurements
             double y = f(rx(generator));
@@ -154,10 +154,10 @@ void analyzeUnaryFunction(int E, int M, const char* title, const itv::interval& 
 
 void analyzeUnaryMethod(int E, int M, const char* title, const itv::interval& D, ufun f, umth mp)
 {
-    std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
-    std::default_random_engine             generator(R());
-    std::uniform_real_distribution<double> rd(D.lo(), D.hi());
-    itv::interval_algebra                  A;
+    std::random_device             R;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine     generator(R());
+    std::uniform_real_distribution rd(D.lo(), D.hi());
+    itv::interval_algebra          A;
 
     std::cout << "Analysis of " << title << " in domain " << D << std::endl;
 
@@ -173,7 +173,7 @@ void analyzeUnaryMethod(int E, int M, const char* title, const itv::interval& D,
         double y1 = -HUGE_VAL;  // std::max(t0, t1);
 
         // random values in X
-        std::uniform_real_distribution<double> rx(X.lo(), X.hi());
+        std::uniform_real_distribution rx(X.lo(), X.hi());
 
         for (int m = 0; m < M; m++) {  // M measurements
             double y = f(rx(generator));
@@ -200,11 +200,11 @@ void analyzeUnaryMethod(int E, int M, const char* title, const itv::interval& D,
 void analyzeBinaryMethod(int E, int M, const char* title, const itv::interval& Dx, const itv::interval& Dy, bfun f,
                          bmth bm)
 {
-    std::random_device                     R;  // used to generate a random seed, based on some hardware randomness
-    std::default_random_engine             generator(R());
-    std::uniform_real_distribution<double> rdx(Dx.lo(), Dx.hi());
-    std::uniform_real_distribution<double> rdy(Dy.lo(), Dy.hi());
-    itv::interval_algebra                  A;
+    std::random_device             R;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine     generator(R());
+    std::uniform_real_distribution rdx(Dx.lo(), Dx.hi());
+    std::uniform_real_distribution rdy(Dy.lo(), Dy.hi());
+    itv::interval_algebra          A;
 
     std::cout << "Analysis of " << title << " in domains " << Dx << " x " << Dy << std::endl;
 
@@ -225,8 +225,8 @@ void analyzeBinaryMethod(int E, int M, const char* title, const itv::interval& D
         double zhi = -HUGE_VAL;  // std::max(t0, t1);
 
         // random values in X
-        std::uniform_real_distribution<double> rvx(X.lo(), X.hi());
-        std::uniform_real_distribution<double> rvy(Y.lo(), Y.hi());
+        std::uniform_real_distribution rvx(X.lo(), X.hi());
+        std::uniform_real_distribution rvy(Y.lo(), Y.hi());
 
         for (int m = 0; m < M; m++) {  // M measurements
             double z = f(rvx(generator), rvy(generator));

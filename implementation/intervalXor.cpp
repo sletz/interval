@@ -13,9 +13,9 @@ namespace itv {
 // void testXor() const;
 static double myXor(double x, double y)
 {
-    int a = int(x);
-    int b = int(y);
-    int c = a ^ b;
+    auto a = int(x);
+    auto b = int(y);
+    int  c = a ^ b;
     return double(c);
 }
 
@@ -23,10 +23,10 @@ static double myXor(double x, double y)
 interval interval_algebra::Xor(const interval& x, const interval& y) const
 {
     if (x.isEmpty() || y.isEmpty()) return {};
-    int x0 = x.lo();
-    int x1 = x.hi();
-    int y0 = y.lo();
-    int y1 = y.hi();
+    auto x0 = int(x.lo());
+    auto x1 = int(x.hi());
+    auto y0 = int(y.lo());
+    auto y1 = int(y.hi());
 
     int z0 = INT32_MAX;
     int z1 = INT32_MIN;

@@ -120,6 +120,6 @@ class interval_algebra {
     interval Xor(const interval& x, const interval& y) const;
     void     testXor() const;
 
-    void testAll();
+    void testAll() const;
 };
 }  // namespace itv
