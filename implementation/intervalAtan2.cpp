@@ -19,5 +19,6 @@ interval interval_algebra::Atan2(const interval& x, const interval& y) const
 
 void interval_algebra::testAtan2() const
 {
+    std::cout << "Atan2 not implemented" << std::endl;
 }
 }

@@ -15,10 +15,43 @@ namespace itv {
 interval interval_algebra::Pow(const interval& x, const interval& y) const
 {
     if (x.lo() > 0) {
-        // Simple case
+        // x all positive
         return Exp(Mul(y, Log(x)));
 
     } else {
+#if 0
+        int n;
+        if (isInt(y, n)) {
+            if (n >= 0) {
+                if (x.hi() < 0) {
+                    // x all negative
+                    if (n % 2 == 0) {
+                        // n is even
+                        return interval(pow(x.hi(), n), pow(x.lo(), n));
+                    } else {
+                        // n is odd
+                    return interval(pow(x.lo(), n), pow(x.hi()), n))
+                    }
+                } else {
+                    // x is on both sides of 0
+                    if (n % 2 == 0) {
+                        // n is even
+                        return interval(1, std::max(pow(x.lo(), n), pow(x.hi(), n)));
+                    } else {
+                        // n is odd
+                        return interval(1, -1);
+                    }
+                }
+            }
+            if (n % 2 == 0) {
+                return Pow(x, n);
+            } else {
+                return Pow(x, n - 1);
+            }
+        } else {
+            return Exp(Mul(y, Log(x)));
+        }
+#endif
         return {};
     }
 }
