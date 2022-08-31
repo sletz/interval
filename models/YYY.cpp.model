@@ -3,7 +3,7 @@
 #include <random>
 
 #include "check.hh"
-#include "interval.hh"
+#include "interval_def.hh"
 #include "interval_algebra.hh"
 
 namespace itv {

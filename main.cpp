@@ -3,8 +3,8 @@
 #include <sstream>
 #include <string>
 #include "check.hh"
-#include "interval.hh"
 #include "interval_algebra.hh"
+#include "interval_def.hh"
 
 using namespace itv;
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "interval.hh"
+#include "interval_def.hh"
 
 namespace itv {
 class interval_algebra {

@@ -4,8 +4,8 @@
 #include <random>
 
 #include "check.hh"
-#include "interval.hh"
 #include "interval_algebra.hh"
+#include "interval_def.hh"
 
 namespace itv {
 //------------------------------------------------------------------------------------------
