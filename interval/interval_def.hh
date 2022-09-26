@@ -33,8 +33,9 @@
 namespace itv {
 class interval {
    private:
-    double fLo{NAN};  ///< minimal value
-    double fHi{NAN};  ///< maximal value
+    double fLo{NAN};        ///< minimal value
+    double fHi{NAN};        ///< maximal value
+    int    fPrecision{24};  ///< precision in bits
 
    public:
     //-------------------------------------------------------------------------
@@ -43,7 +44,7 @@ class interval {
 
     interval() = default;
 
-    interval(double n, double m)
+    interval(double n, double m, int precision = 24)
     {
         if (std::isnan(n) || std::isnan(m)) {
             fLo = NAN;
@@ -52,6 +53,7 @@ class interval {
             fLo = std::min(n, m);
             fHi = std::max(n, m);
         }
+        fPrecision = precision;
     }
 
     explicit interval(double n) : interval(n, n) {}
@@ -85,6 +87,7 @@ class interval {
     double lo() const { return fLo; }
     double hi() const { return fHi; }
     double size() const { return fHi - fLo; }
+    int    precision() const { return fPrecision; }
 };
 
 //-------------------------------------------------------------------------

@@ -77,10 +77,10 @@ static double max4(double a, double b, double c, double d)
 
 itv::interval testfun(int N, bfun f, const itv::interval& x, const itv::interval& y)
 {
-    std::random_device             rd;  // used to generate a random seed, based on some hardware randomness
-    std::default_random_engine     generator(rd());
-    std::uniform_real_distribution rx(x.lo(), x.hi());
-    std::uniform_real_distribution ry(y.lo(), y.hi());
+    std::random_device                     rd;  // used to generate a random seed, based on some hardware randomness
+    std::default_random_engine             generator(rd());
+    std::uniform_real_distribution<double> rx(x.lo(), x.hi());
+    std::uniform_real_distribution<double> ry(y.lo(), y.hi());
 
     double a = f(x.lo(), y.lo());
     double b = f(x.lo(), y.hi());
