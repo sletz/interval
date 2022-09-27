@@ -33,9 +33,9 @@
 namespace itv {
 class interval {
    private:
-    double fLo{NAN};        ///< minimal value
-    double fHi{NAN};        ///< maximal value
-    int    fPrecision{24};  ///< precision in bits
+    double fLo{NAN};   ///< minimal value
+    double fHi{NAN};   ///< maximal value
+    int    fLSB{-24};  ///< lsb in bits
 
    public:
     //-------------------------------------------------------------------------
@@ -44,7 +44,7 @@ class interval {
 
     interval() = default;
 
-    interval(double n, double m, int precision = 24)
+    interval(double n, double m, int lsb = -24)
     {
         if (std::isnan(n) || std::isnan(m)) {
             fLo = NAN;
@@ -53,7 +53,7 @@ class interval {
             fLo = std::min(n, m);
             fHi = std::max(n, m);
         }
-        fPrecision = precision;
+        fLSB = lsb;
     }
 
     explicit interval(double n) : interval(n, n) {}
@@ -87,7 +87,20 @@ class interval {
     double lo() const { return fLo; }
     double hi() const { return fHi; }
     double size() const { return fHi - fLo; }
-    int    precision() const { return fPrecision; }
+    int    lsb() const { return fLSB; }
+    int    msb() const
+    {
+        double range = std::max(1.0, std::max(std::abs(fLo), std::abs(fHi)));
+        int    m     = int(std::ceil(std::log2(range)));
+
+        if (fLo >= 0) {
+            // no need for a sign bit
+            return m;
+        } else {
+            // we generally need a sign bit
+            return 1 + m;q
+        }
+    }
 };
 
 //-------------------------------------------------------------------------
@@ -98,10 +111,8 @@ inline std::ostream& operator<<(std::ostream& dst, const interval& i)
 {
     if (i.isEmpty()) {
         return dst << "interval()";
-    } else if (i.lo() == i.hi()) {
-        return dst << "interval(" << i.lo() << ")";
     } else {
-        return dst << "interval(" << i.lo() << "," << i.hi() << ")";
+        return dst << "interval(" << i.lo() << ',' << i.hi() << ',' << i.lsb() << ")";
     }
 }
 
