@@ -98,7 +98,7 @@ class interval {
             return m;
         } else {
             // we generally need a sign bit
-            return 1 + m;q
+            return 1 + m;
         }
     }
 };

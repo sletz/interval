@@ -2,9 +2,9 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "check.hh"
-#include "interval_algebra.hh"
-#include "interval_def.hh"
+#include "interval/check.hh"
+#include "interval/interval_algebra.hh"
+#include "interval/interval_def.hh"
 
 using namespace itv;
 
