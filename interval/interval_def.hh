@@ -44,7 +44,7 @@ class interval {
 
     interval() = default;
 
-    interval(double n, double m, int lsb = -24)
+    interval(double n, double m, int lsb = -24) noexcept
     {
         if (std::isnan(n) || std::isnan(m)) {
             fLo = NAN;
@@ -56,7 +56,7 @@ class interval {
         fLSB = lsb;
     }
 
-    explicit interval(double n) : interval(n, n) {}
+    explicit interval(double n) noexcept : interval(n, n) {}
 
     // interval(const interval& r) : fEmpty(r.empty()), fLo(r.lo()), fHi(r.hi())
     // {}
