@@ -26,7 +26,7 @@ interval interval_algebra::Not(const interval& x) const
         if (z < z0) z0 = z;
         if (z > z1) z1 = z;
     }
-    return interval(double(z0), double(z1));
+    return {double(z0), double(z1)};
 }
 
 static double myNot(double x)
