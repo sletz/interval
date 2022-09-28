@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 project(TestInterval)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-*,clang-*,cppcoreguidelines-*,-cppcoreguidelines-avoid-magic-numbers,performance-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,llvm-*")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(. ./interval)

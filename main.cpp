@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+
 #include "interval/check.hh"
 #include "interval/interval_algebra.hh"
 #include "interval/interval_def.hh"

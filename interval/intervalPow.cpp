@@ -18,15 +18,17 @@ static interval ipow(const interval& x, int y)
     assert(y >= 0);
     if (y == 0) {
         return interval(1.0);
-    } else if ((y & 1) == 0) {
+    }
+
+    if ((y & 1) == 0) {
         // y is even
         double z0 = std::pow(x.lo(), y);
         double z1 = std::pow(x.hi(), y);
         return {0, std::max(z0, z1)};
-    } else {
-        // y is odd
-        return {std::pow(x.lo(), y), std::pow(x.hi(), y)};
     }
+
+    // y is odd
+    return {std::pow(x.lo(), y), std::pow(x.hi(), y)};
 }
 
 interval interval_algebra::Pow(const interval& x, const interval& y) const
@@ -34,15 +36,15 @@ interval interval_algebra::Pow(const interval& x, const interval& y) const
     if (x.lo() > 0) {
         // x all positive
         return Exp(Mul(y, Log(x)));
-    } else {
-        int      y0 = std::max(0, int(y.lo()));
-        int      y1 = std::max(0, int(y.hi()));
-        interval z  = ipow(x, y0);
-        for (int i = y0 + 1; i <= y1; ++i) {
-            z = reunion(z, ipow(x, i));
-        }
-        return z;
     }
+
+    int      y0 = std::max(0, int(y.lo()));
+    int      y1 = std::max(0, int(y.hi()));
+    interval z  = ipow(x, y0);
+    for (int i = y0 + 1; i <= y1; ++i) {
+        z = reunion(z, ipow(x, i));
+    }
+    return z;
 }
 
 static double myPow(double x, double y)

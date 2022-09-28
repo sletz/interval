@@ -15,8 +15,8 @@ namespace itv {
 interval interval_algebra::Not(const interval& x) const
 {
     if (x.isEmpty()) return x;
-    int x0 = x.lo();
-    int x1 = x.hi();
+    int x0 = int(x.lo());
+    int x1 = int(x.hi());
 
     int z0 = INT32_MAX;
     int z1 = INT32_MIN;
