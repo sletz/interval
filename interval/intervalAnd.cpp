@@ -73,7 +73,7 @@ interval bmAnd(const interval& x, int mask)
     int w  = hi - lo;
     int p  = mask + 1;
 
-    if (w >= p) return interval{0, double(mask)};
+    if (w >= p) return interval{0.0, double(mask)};
 
     // shit x to be positive
     lo = lo % p;
@@ -82,7 +82,7 @@ interval bmAnd(const interval& x, int mask)
 
     if (hi < p) return interval{double(lo), double(hi)};
 
-    return interval{0, double(mask)};
+    return interval{0.0, double(mask)};
 }
 /*
 interval interval_algebra::And(const interval& x, const interval& y) const
@@ -124,7 +124,7 @@ interval interval_algebra::And(const interval& x, const interval& y) const
             if (z > z1) z1 = z;
         }
     }
-    return {double(z0), double(z1)};
+    return {double(z0), double(z1), 0};
 }
 
 void interval_algebra::testAnd() const

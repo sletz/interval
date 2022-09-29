@@ -20,6 +20,6 @@ interval interval_algebra::Rsh(const interval& x, const interval& y) const
 
 void interval_algebra::testRsh() const
 {
-    check("test algebra Rsh", Rsh(interval(8, 16), interval(4)), interval(0.5, 1));
+    check("test algebra Rsh", Rsh(interval(8.0, 16.0), interval(4.0)), interval(0.5, 1.0));
 }
 }  // namespace itv

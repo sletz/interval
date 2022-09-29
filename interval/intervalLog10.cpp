@@ -16,7 +16,7 @@ interval interval_algebra::Log10(const interval& x) const
 {
     if (x.isEmpty()) return {};
 
-    interval i = intersection(interval(0, HUGE_VAL), x);
+    interval i = intersection(interval(0.0, HUGE_VAL), x);
     return {log10(i.lo()), log10(i.hi())};
 }
 

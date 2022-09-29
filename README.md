@@ -1,5 +1,25 @@
-# interval
+# Intervals
+
 A simple interval library for the Faust compiler. 
+
+## Purposes of intervals as used by the Faust compiler
+
+- determine the size of a delay line
+- check that a Faust program will execute correctly, without producing infinite or NAN values
+- compute the precision needed for fix-point and fpga implementations
+- detect and report errors at compile time
+
+## Definition of an interval
+
+An interval is a triplet <lo,hi,lsb> where:
+- lo: is the lowest value
+- hi: is the highest value
+- lsb: is the least significant bit
+- The msb can be deduced from lo and hi
+
+An interval represent integer values if lo and hi are integers and if lsb >= 0
+
+## Organization of the code
 
 All the code is encapsulated in the namespace 'itv'. It is organized as follows:
 

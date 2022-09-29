@@ -12,7 +12,7 @@ namespace itv {
 // interval Acosh(const interval& x) const;
 // void testAcosh() const;
 
-static const interval domain(1, HUGE_VAL);
+static const interval domain(1.0, HUGE_VAL);
 
 interval interval_algebra::Acosh(const interval& x) const
 {

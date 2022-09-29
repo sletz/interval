@@ -44,6 +44,7 @@ class interval {
 
     interval() = default;
 
+    // Real intervals
     interval(double n, double m, int lsb = -24) noexcept
     {
         if (std::isnan(n) || std::isnan(m)) {
@@ -57,6 +58,11 @@ class interval {
     }
 
     explicit interval(double n) noexcept : interval(n, n) {}
+
+    // Integer intervals (Real intervals with lsb = 0)
+    interval(int n, int m) noexcept : interval(double(n), double(m), 0) {}
+
+    explicit interval(int n) noexcept : interval(n, n) {}
 
     // interval(const interval& r) : fEmpty(r.empty()), fLo(r.lo()), fHi(r.hi())
     // {}
@@ -77,6 +83,8 @@ class interval {
         auto n = int(fHi);
         return isconst() && ((n & (-n)) == n);
     }
+
+    bool isint() const { return fLSB >= 0; }
 
     bool isbitmask() const
     {

@@ -21,7 +21,7 @@ interval interval_algebra::Asin(const interval& x) const
 {
     interval i = intersection(domain, x);
     if (i.isEmpty()) return i;
-    return {asin(i.lo()), asin(i.hi())};
+    return {asin(i.lo()), asin(i.hi()), -24};
 }
 
 void interval_algebra::testAsin() const

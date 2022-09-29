@@ -15,7 +15,7 @@ interval interval_algebra::Add(const interval& x, const interval& y) const
 {
     if (x.isEmpty() || y.isEmpty()) return {};
 
-    return {x.lo() + y.lo(), x.hi() + y.hi()};
+    return {x.lo() + y.lo(), x.hi() + y.hi(), std::min(x.lsb(), y.lsb())};
 }
 
 void interval_algebra::testAdd() const

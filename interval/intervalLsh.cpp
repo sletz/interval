@@ -22,7 +22,7 @@ interval interval_algebra::Lsh(const interval& x, const interval& y) const
 void interval_algebra::testLsh() const
 {
     check("test algebra Lsh", Lsh(interval(0, 1), interval(4)), interval(0, 16));
-    check("test algebra Lsh", Lsh(interval(0.5, 1), interval(-1, 4)), interval(0.25, 16));
+    check("test algebra Lsh", Lsh(interval(0.5, 1.0), interval(-1, 4)), interval(0.25, 16.0));
     check("test algebra Lsh", Lsh(interval(-10, 10), interval(-1, 4)), interval(-160, 160));
 }
 }  // namespace itv
