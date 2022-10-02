@@ -66,6 +66,7 @@ class interval {
     //-------------------------------------------------------------------------
 
     bool isEmpty() const { return std::isnan(fLo) || std::isnan(fHi); }
+    bool isValid() const { return !isEmpty(); }  // for compatibility reasons
     bool has(double x) const { return (fLo <= x) && (fHi >= x); }
     bool is(double x) const { return (fLo == x) && (fHi == x); }
     bool hasZero() const { return has(0.0); }
@@ -99,6 +100,14 @@ class interval {
         } else {
             // we generally need a sign bit
             return 1 + m;
+        }
+    }
+    std::string to_string() const
+    {
+        if (isEmpty()) {
+            return "[]";
+        } else {
+            return std::to_string('[') + std::to_string(fLo) + ',' + std::to_string(fHi) + ']';
         }
     }
 };
