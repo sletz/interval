@@ -67,6 +67,8 @@ class interval {
 
     bool isEmpty() const { return std::isnan(fLo) || std::isnan(fHi); }
     bool isValid() const { return !isEmpty(); }  // for compatibility reasons
+    bool isUnbounded() const { return isinf(fLo) || isinf(fHi); }
+    bool isBounded() const { return !isUnbounded(); }
     bool has(double x) const { return (fLo <= x) && (fHi >= x); }
     bool is(double x) const { return (fLo == x) && (fHi == x); }
     bool hasZero() const { return has(0.0); }
