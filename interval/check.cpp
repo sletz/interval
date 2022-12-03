@@ -237,7 +237,7 @@ void analyzeBinaryMethod(int E, int M, const char* title, const itv::interval& D
         }
         itv::interval Zm(zlo, zhi);         // the measured Z
         itv::interval Zc  = (A.*bm)(X, Y);  // the computed Z
-        double        lsb = Zm.size() / Zc.size();
+        double        lsb = (Zm.size() == Zc.size()) ? 1 : Zm.size() / Zc.size();
 
         if (Zc >= Zm) {
             std::cout << "OK    " << e << ": " << title << "(" << X << "," << Y << ") =c=> " << Zc << " >= " << Zm
