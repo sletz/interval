@@ -2,6 +2,7 @@
 #include <functional>
 #include <random>
 
+#include "bitwiseOperations.hh"
 #include "check.hh"
 #include "interval_algebra.hh"
 #include "interval_def.hh"
@@ -114,21 +115,13 @@ interval interval_algebra::And(const interval& x, const interval& y) const
     int y0 = int(y.lo());
     int y1 = int(y.hi());
 
-    int z0 = INT32_MAX;
-    int z1 = INT32_MIN;
-
-    for (int i = x0; i <= x1; i++) {
-        for (int j = y0; j <= y1; j++) {
-            int z = i & j;
-            if (z < z0) z0 = z;
-            if (z > z1) z1 = z;
-        }
-    }
-    return {double(z0), double(z1)};
+    SInterval z = bitwiseSignedAnd({x0, x1}, {y0, y1});
+    return {double(z.lo), double(z.hi)};
 }
 
 void interval_algebra::testAnd() const
 {
+    analyzeBinaryMethod(10, 2000, "And", interval(256, 257), interval(127), myAnd, &interval_algebra::And);
     analyzeBinaryMethod(10, 2000, "And", interval(-1000, -800), interval(127), myAnd, &interval_algebra::And);
     analyzeBinaryMethod(10, 2000, "And", interval(-1000, -800), interval(123), myAnd, &interval_algebra::And);
     analyzeBinaryMethod(10, 2000, "And", interval(-128, 128), interval(127), myAnd, &interval_algebra::And);
