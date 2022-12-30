@@ -1,0 +1,22 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: cmake create build
+      run: cmake -S . -B build
+    - name: cmake build
+      run: cmake --build build/ --target all
+    - name: test
+      run: ./build/TestInterval
+    
