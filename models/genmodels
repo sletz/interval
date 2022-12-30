@@ -11,7 +11,7 @@ function genunary {
 BINOP="And Or Xor Lsh Rsh Lt Le Eq Ne Gt Ge Pow Atan2"
 
 UNOP1="Not Cos Sin Tan Acos Asin Atan Cosh Sinh Tanh Acosh Asinh Atanh Exp"
-UNOP2="Log Log10 Ceil Floor Rint Remainder Int Float Sqrt"
+UNOP2="Log Log10 Ceil Floor Rint Remainder IntCast FloatCast Sqrt"
 UNOP3="Min Max Delay Mem"
 UNOP="$UNOP1 $UNOP2 $UNOP3"
 

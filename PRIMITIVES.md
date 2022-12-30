@@ -21,14 +21,14 @@ As extracted from Faust grammar. The user interface primitives where removed...
 | EQ              | Eq                |
 | EXP             | Exp               |
 | FDELAY          | Delay             |
-| FLOAT           | Float             |
-| FLOATCAST       | Float ?           |
+| FLOAT           | FloatCast             |
+| FLOATCAST       | FloatCast ?           |
 | FLOOR           | Floor             |
 | FMOD            | Mod               |
 | GE              | Ge                |
 | GT              | Gt                |
-| INT             | Int               |
-| INTCAST         | Int ?             |
+| INT             | IntCast               |
+| INTCAST         | IntCast ?             |
 |                 | Inv               |
 | LE              | Le                |
 | LOG             | Log               |
