@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-*,clang-*,cppcoreguidelines-*,-cppcoreguidelines-avoid-magic-numbers,performance-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,llvm-*,modernize-*,-modernize-use-trailing-return-type,cert-*")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+add_definitions(-D_USE_MATH_DEFINES)
+
 include_directories(. ./interval)
 
 # add the executable
