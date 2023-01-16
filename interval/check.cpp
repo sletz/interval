@@ -197,6 +197,18 @@ void analyzeUnaryMethod(int E, int M, const char* title, const itv::interval& D,
     std::cout << std::endl;
 }
 
+/**
+ * @brief Check the binary interval function gives a good approximation of the numerical function.
+ *
+ * @param E number of intervals/experiments
+ * @param M number of measurements used to estimate the resulting interval
+ * @param title, name of the tested function
+ * @param Dx maximal interval for x
+ * @param Dy maximal interval for y
+ * @param f the numerical function of reference
+ * @param bm the interval method corresponding to f
+ */
+
 void analyzeBinaryMethod(int E, int M, const char* title, const itv::interval& Dx, const itv::interval& Dy, bfun f,
                          bmth bm)
 {
@@ -228,6 +240,7 @@ void analyzeBinaryMethod(int E, int M, const char* title, const itv::interval& D
         std::uniform_real_distribution rvx(X.lo(), X.hi());
         std::uniform_real_distribution rvy(Y.lo(), Y.hi());
 
+        // measure the interval Z using the numerical function f
         for (int m = 0; m < M; m++) {  // M measurements
             double z = f(rvx(generator), rvy(generator));
             if (!std::isnan(z)) {
