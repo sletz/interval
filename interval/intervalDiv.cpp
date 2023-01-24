@@ -22,8 +22,8 @@ double div(double x, double y)
 
 void interval_algebra::testDiv() const
 {
-    analyzeBinaryMethod(10, 2000, "Div", interval(-1000, 1000), interval(0.001, 1000), div, &interval_algebra::Div);
-    analyzeBinaryMethod(10, 2000, "Div", interval(-1000, 1000), interval(-1000, -0.001), div, &interval_algebra::Div);
+    analyzeBinaryMethod(10, 2000, "Div", interval(-1000, 1000), interval(0.001, 1000.0), div, &interval_algebra::Div);
+    analyzeBinaryMethod(10, 2000, "Div", interval(-1000, 1000), interval(-1000.0, -0.001), div, &interval_algebra::Div);
 
     //     check("test algebra Div", Div(interval(-2, 3), interval(1, 10)), interval(-2, 3));
     //     check("test algebra Div", Div(interval(-2, 3), interval(-1, 10)), interval(-HUGE_VAL, +HUGE_VAL));

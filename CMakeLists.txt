@@ -3,9 +3,13 @@ cmake_minimum_required(VERSION 3.10)
 # set the project name
 project(TestInterval)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
+
+if (NOTIDY)
+else ()
 set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-*,clang-*,cppcoreguidelines-*,-cppcoreguidelines-avoid-magic-numbers,performance-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,llvm-*,modernize-*,-modernize-use-trailing-return-type,cert-*,misc-*,-misc-no-recursion,-misc-redundant-expression,portability-*")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+endif()
 
 include_directories(. ./interval)
 

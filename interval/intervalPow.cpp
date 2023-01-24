@@ -24,7 +24,7 @@ static interval ipow(const interval& x, int y)
         // y is even
         double z0 = std::pow(x.lo(), y);
         double z1 = std::pow(x.hi(), y);
-        return {0, std::max(z0, z1)};
+        return {0.0, std::max(z0, z1)};
     }
 
     // y is odd
@@ -57,7 +57,7 @@ void interval_algebra::testPow() const
     analyzeBinaryMethod(10, 2000, "Pow2", interval(-1, 1), interval(1, 3), myPow, &interval_algebra::Pow);
     analyzeBinaryMethod(10, 2000, "Pow2", interval(-1, 1), interval(1, 10), myPow, &interval_algebra::Pow);
     analyzeBinaryMethod(10, 2000, "Pow2", interval(1, 1000), interval(-10, 10), myPow, &interval_algebra::Pow);
-    analyzeBinaryMethod(10, 2000, "Pow2", interval(0.001, 1), interval(-10, 10), myPow, &interval_algebra::Pow);
-    analyzeBinaryMethod(10, 2000, "Pow2", interval(0.001, 10), interval(-20, 20), myPow, &interval_algebra::Pow);
+    analyzeBinaryMethod(10, 2000, "Pow2", interval(0.001, 1.0), interval(-10, 10), myPow, &interval_algebra::Pow);
+    analyzeBinaryMethod(10, 2000, "Pow2", interval(0.001, 10.0), interval(-20, 20), myPow, &interval_algebra::Pow);
 }
 }  // namespace itv
