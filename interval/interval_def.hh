@@ -106,15 +106,8 @@ class interval {
     int    msb() const
     {
         double range = std::max(1.0, std::max(std::abs(fLo), std::abs(fHi)));
-        int    m     = int(std::ceil(std::log2(range)));
-
-        if (fLo >= 0) {
-            // no need for a sign bit
-            return m;
-        } else {
-            // we generally need a sign bit
-            return 1 + m;
-        }
+        // The sign bit will be added later on
+        return int(std::ceil(std::log2(range)));
     }
     std::string to_string() const
     {
